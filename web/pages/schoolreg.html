@@ -1,0 +1,191 @@
+<div style="margin-top: 120px;"></div>
+<div>
+    <div class="form-header">
+        <h2>Registration</h2>
+        <p class="grey-text">Create an account and register your organisation</p>
+    </div>
+    <form onsubmit="registerOrganiser(event)">
+        <div class="forms">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">School</div>
+                    <div class="form-step-desc">School's Information</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col60">
+                            <div class="form-field-label">Name of School</div>
+                            <input class="form-field-input" placeholder="Name of School" id="name" required/>
+                        </div>
+                        <div class="form-field col40">
+                            <div class="form-field-label">School Phone Number</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="School Phone Number" id="school_number" required/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">School Address</div>
+                            <input class="form-field-input" placeholder="School Address" id="school_address" required/>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">How many students in the school?</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="How many students in the school?" />
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">How many staff work at the school?</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="How many staff work at the school?" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">List all your classes</div>
+                            <div class="x-center">
+                                <input type="text" class="form-field-input" placeholder="List all your classes" />
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="child-form form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Organiser</div>
+                    <div class="form-step-desc">Organiser Details</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">First Name *</div>
+                            <input class="form-field-input" placeholder="Contact Person" id="first_name" required/>
+                        </div>
+                         <div class="form-field col50">
+                            <div class="form-field-label">Last Name *</div>
+                            <input class="form-field-input" placeholder="Contact Person Last Name" id="last_name" required/>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Email *</div>
+                            <input class="form-field-input" placeholder="Email" id="email" required/>
+                        </div>
+                         <div class="form-field col50">
+                            <div class="form-field-label">Phone Number *</div>
+                            <input class="form-field-input" placeholder="Phone Number" id="organiser_number" required/>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Postal Address</div>
+                            <input class="form-field-input" placeholder="Postal Address"  id="organiser_address" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="child-form form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Delivery</div>
+                    <div class="form-step-desc">Delivery Information</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col70">
+                            <div class="form-field-label">Delivery Address</div>
+                            <input class="form-field-input" placeholder="Delivery Address" />
+                        </div>
+                        <button class="btn default left20 col30 icon-right">Same as School Address
+                            <i class="bi bi-copy"></i>
+                        </button>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col60">
+                            <div class="form-field-label">Delivery Instructions</div>
+                            <input class="form-field-input" placeholder="Delivery Instructions" />
+                        </div>
+                        <div class="form-field col40">
+                            <div class="form-field-label">Site Contact Person</div>
+                            <input class="form-field-input" placeholder="Site Contact Person" />
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Site Contact Phone</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Site Contact Phone" />
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Site Contact Email</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Site Contact Email" />
+                                <i class="form-field-icon bi bi-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="child-form form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Finance</div>
+                    <div class="form-step-desc">Finance Information</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Finance Contact</div>
+                            <input class="form-field-input" placeholder="Finance Contact" />
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Finance Contact Email</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Finance Contact Email" />
+                                <i class="form-field-icon bi bi-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Finance Contact Phone</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Finance Contact Phone" />
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Bank Name</div>
+                            <input class="form-field-input" placeholder="Bank Name" />
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">BSB</div>
+                            <input class="form-field-input" placeholder="BSB" />
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Account Number</div>
+                            <input class="form-field-input" placeholder="Account Number" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <div class="button-group form-set xy-center">
+            <button id="submit" class="btn default-2 icon-right">Submit <i class="bi bi-arrow-90deg-right"></i></button>
+        </div>
+    </form>>    
+
+</div>
+<div style="margin-bottom: 80px;"></div>

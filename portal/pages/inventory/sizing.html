@@ -1,0 +1,60 @@
+<style type="text/css">
+    .overlay-wrapper {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding-top: 4em;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.285);
+    }
+    .custom-modal {
+        position: absolute;
+        left: 40%;
+    }
+</style>
+<div class="portal-container-body">
+    <div class="space-btwn x-center bottom10">
+        <div class="portal-container-header-sub-text header-3">Sizing</div>
+        <button type="button" id="link_to_create_location" class="btn orange icon-right" onclick="Inventory.sizing.initAddSize(); return false;">Add Sizing <i class="bi bi-plus-circle"></i></button>
+    </div>
+    <div class="portal-table table-responsive bottom20">
+        <table class="table-1 col100 ingredients_table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modals">
+    <div class="overlay-wrapper overlay-sizing" style="display: none;">
+        <div data-id="update-sizing" class="custom-modal" style="width: 500px;display: none;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-header-1">Sizing</div>
+                <div class="custom-modal-header-2">Add /Update sizes </div>
+            </div>
+            <div class="custom-modal-body">
+                <div class="div_alert"></div>
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Size Name</div>
+                        <div class="x-center">
+                            <input type="text" name="name" class="form-field-input" placeholder="e.g. Small, Medium, Large" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col100 selected-options"></div>
+            </div>
+            <div class="custom-modal-footer space-btwn">
+                <button type="button" class="btn ghost" onclick="MSL_GLOBAL.main.closeModal('overlay-sizing'); return false;">Cancel</button>
+                <button type="button" class="btn default icon-right" onclick="Inventory.sizing.addSize(); return false;">Okay <i class="bi bi-check-all"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

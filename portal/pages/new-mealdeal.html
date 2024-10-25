@@ -1,0 +1,227 @@
+
+    <div class="portal-top-nav y-end x-center">
+        <div class="portal-top-nav-user">Subway the Gap</div>
+        <div class="portal-top-nav-icon"><i class="bi bi-person-fill"></i></div>
+    </div>
+    <div class="portal-container-body flex">
+        <div class="col100">
+            <div class="form-header">
+                <h2>Create Meal Deal</h2>
+                <p class="grey-text">Create a meal deal to start adding to your store</p>
+            </div>
+
+            <form onsubmit="registerSupplier(event)">
+                <div class="forms">
+                    <div class="form-set flex col100">
+                        <div class="form-step col30">
+                            <div class="form-step-name">Meal Deal</div>
+                            <div class="form-step-desc">Meal Information and Details</div>
+                        </div>
+                        <div class="form-group col80">
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field-image">
+                                    <input type="file" class="form-field-image-input" style="display: none;" />
+                                    <img src="" />
+                                    <div class="form-field-image-overlay">
+                                        <button data-btn="select-image" class="btn default">Select Image</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col100">
+                                    <div class="form-field-label">Meal Deal Name</div>
+                                    <input type="hidden" class="form-field-input" id="sb_id" value="1" />
+                                    <input class="form-field-input" id="product_name" value=""
+                                        placeholder="Product Name" />
+                                </div>
+                            </div>
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col100">
+                                    <div class="form-field-label">Description</div>
+                                    <textarea class="form-field-input" id="description" value=""
+                                        placeholder="Description"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Price (Ex GST)</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" id="price" value="" placeholder="Price" />
+                                    </div>
+                                </div>
+
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Item Minimum</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" id="item_min" value=""
+                                            placeholder="Minimum Item Qty" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Menu Serving</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" id="menu_serving" value=""
+                                            placeholder="Menu Serving" />
+                                    </div>
+                                </div>
+
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Menu price percent</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" id="menu_price_percent" value=""
+                                            placeholder="Menu price percent" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Is Customizable</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" id="is_customizable" value=""
+                                            placeholder="Customizable" />
+                                    </div>
+                                </div>
+
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Is last min order</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" id="is_last_min_order" value=""
+                                            placeholder="Last min order" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                                <div class="form-field-2 column col100 top10">
+                                    <div class="form-field-label-shown">
+                                        <input type="hidden" class="form-field-input" id="status" value="1"
+                                            placeholder="Last min order" />
+                                        <span>Status</span>
+                                    </div>
+                                    <div class="form-field-tags">
+                                        <div onclick="functionStatus(event)" class="form-field-tag active">Active</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                                <div class="form-field-2 column col100 top10">
+                                    <div class="form-field-label-shown">
+                                        <span>Allergens</span>
+                                    </div>
+
+
+                                    <div class="form-field-tags">
+                                        <div class="form-field-tag active">Dairy Free</div>
+                                        <div class="form-field-tag" value="2">Egg Free </div>
+                                        <div class="form-field-tag" value="3">Gluten Free </div>
+                                        <div class="form-field-tag" value="4">Nut Free</div>
+                                        <div class="form-field-tag" value="5">Shellfish and Crustaceans Free</div>
+                                    </div>
+                                    <div class="form-field-tags-selected">
+                                        <div class="form-field-tags-selected-item">
+                                            <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                                style="width:50px;height:50px">
+                                            </lord-icon>
+                                            <span>Vegetable</span>
+                                        </div>
+                                        <div class="form-field-tags-selected-item">
+                                            <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                                style="width:50px;height:50px">
+                                            </lord-icon>
+                                            <span>Vegetable</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                                <div class="form-field-2 column col100 top10">
+                                    <div class="form-field-label-shown">
+                                        <span>Dietaries</span>
+                                    </div>
+                                    <div class="form-field-tags">
+                                        <div class="form-field-tag">Halal</div>
+                                        <div class="form-field-tag">Pescaterian</div>
+                                        <div class="form-field-tag">Vegan</div>
+                                        <div class="form-field-tag">Vegetarian</div>
+
+
+                                        <div class="form-field-tags-selected">
+                                            <div class="form-field-tags-selected-item">
+                                                <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                                    style="width:50px;height:50px">
+                                                </lord-icon>
+                                                <span>Vegetable</span>
+                                            </div>
+                                            <div class="form-field-tags-selected-item">
+                                                <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                                    style="width:50px;height:50px">
+                                                </lord-icon>
+                                                <span>Vegetable</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-set flex col100">
+                            <div class="form-step col30">
+                                <div class="form-step-name">Inclusions</div>
+                                <div class="form-step-desc">What's included in the meal deal?</div>
+                            </div>
+                            <div class="form-group col80 x-center">
+                                <div class="form-group-row col80 flex">
+                                    <div class="form-field col30">
+                                        <div class="form-field-label">Inclusion Name</div>
+                                        <input class="form-field-input" placeholder="Inclusion Name" />
+                                    </div>
+                                    <div class="form-field col50">
+                                        <div class="form-field-label">Product</div>
+                                        <div class="x-center">
+                                            <input class="form-field-input" placeholder="Search for Product" />
+                                            <i class="form-field-icon bi bi-search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col20 x-center">
+                                        <button class="btn default icon-right">Add Inclusion <i
+                                                class="bi bi-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group form-set xy-center">
+                        <button id="submit" class="btn default-2 icon-right">Submit <i
+                                class="bi bi-arrow-90deg-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="error-message" style="color: red;"></div>
+
+            </form>
+
+        </div>
+    </div>
+<div class="loading-screen x-center column" style="display: none;">
+    <div class="loading-screen-logo">
+        <img src="../assets/img/iconlogo.png" />
+    </div>
+    <div class="loading-screen-text x-center">
+        <div class="green-text">my</div>
+        <div class="orange-text">school</div>
+        <div class="red-text">lunch</div>
+    </div>
+    <div class="loading-screen-sub-text">Loading...</div>
+</div>

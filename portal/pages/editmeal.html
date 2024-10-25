@@ -1,0 +1,58 @@
+<style>
+    .loading-screen {
+        z-index: 3;
+    }
+</style>
+<div onload="setJs()">
+    <form onsubmit="registerSupplierEmployee(event)">
+        <div class="form-header" id="form-header_">
+            <h2 id="h2_user_create_page">Customize Meal</h2>
+            <!-- <p id="p_user_create_page" class="grey-text">Create an account for your employee</p> -->
+        </div>
+        <div class="forms">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Meal Information</div>
+                    <!-- <div class="form-step-desc">Meal Information</div> -->
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Meal Details</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="" id="name"
+                                    value="Sushi Meal and Drink Deal" />
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Schedule Count</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="" id="end_date" value="52" />
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="button-group">
+                        <button id="submit" type="submit" class="btn default icon-right">Update meal</button>
+                        <button type="button" class="btn default-2 icon-left" onclick="window.location.href = '/meal-deal';"><i class="bi bi-arrow-90deg-left"></i> Got Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+
+        /*$(document).ready(() => {
+
+            document.getElementById("first_name").value = 'Matthew';
+
+            console.log($("#add-child-form"));
+            $("#add-child-form").on("click", function () {
+                const row = $('.child-form').eq(0);
+                const element = $(row).clone();
+                $(element).find("input").val("");
+                $(element).appendTo('.forms');
+            });
+        });*/
+    </script>

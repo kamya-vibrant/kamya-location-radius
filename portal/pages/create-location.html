@@ -1,0 +1,296 @@
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/portal/assets/styles/cropimage.css">
+
+<style>
+    .modal-backdrop {
+        z-index: auto;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .custom-file-upload {
+      border: 1px solid #ccc;
+      display: inline-block;
+      padding: 6px 12px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    #pic-logo{
+        visibility: hidden; position: absolute;margin-left: 12PX;margin-top: 100PX;background-color: white;padding: 20PX; max-height: 150px; width: 10%;
+    }
+    #pic-banner{
+        visibility: hidden; margin-left:10px;
+/*        max-height:386px;*/
+    }
+
+    #image_preview { width:300px; }
+    #crop_popup .modal-dialog { max-width:700px; }
+    #crop_popup .modal-body {
+      height: 400px;
+      overflow: auto; 
+    }
+    .loading-screen{
+        z-index:3;
+    }
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    .form-checkbox{
+/*        text-align: center;*/
+        padding-top: 10px;
+    }
+    .form-checkbox > label{
+
+    }
+    span#updateMap {
+        padding: 10px;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+</style>    
+    <div class="portal-container-body flex">
+        <div class="col100">
+            <div class="form-header">
+                <h2 id="headtitLe">Create a Location</h2>
+                <p id="headtitLeP"class="grey-text">Add the locations of your business</p>
+            </div>
+            <img src="" id="image_preview" class="d-none">
+            <div class="modal" tabindex="-1" role="dialog" id="crop_popup">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center">Crop image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body img-contaner w-100"></div>
+                  <div class="modal-footer text-center justify-content-center mt-3">
+                    <button type="button" class="crop-it">Crop</button>
+                    <button type="button" class="reset-it">Reset</button>
+                    <button type="button" id ="modalclose" class="dismiss" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form onsubmit="createLocation(event)">
+                <div class="forms">
+                    
+                    <div class="form-set flex col100" id="div_banner_logo"> 
+                        <!-- <div class="form-step col30"></div> -->
+                        <div class="form-group-row col100 flex">
+                            <img  id="pic-banner" src="" width="100%" />
+                            <img id="pic-logo"  src="" /> 
+                            
+                        </div>
+
+                    </div>
+                    <div class="form-set flex col100" id="selectLogoBanner"> 
+                        <div class="form-step col30"></div>
+                        <div class="form-group-row col80 flex">
+                            <textarea id="textareabanner" style="display:none;"></textarea>
+                            <textarea id="textarealogo" style="display:none"></textarea>
+
+                            <label for="logo" class="btn default custom-file-upload">Select Logo</label>
+                            <input id="logo" type="file" onchange="putlogo(this)" />
+
+                            <label for="banner" class="btn default custom-file-upload">Select Banner</label>
+                            <input id="banner" type="file"  onchange="putbanner(this)"/>   
+                            <label id="crop" style="visibility: hidden;" class="btn default">Crop Image</label>   
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="form-set flex col100">
+                        <div class="form-step col30"></div>
+                         <div class="form-group col80">
+                            <input type="checkbox" id="use_general_banner_logo" onchange="useDefaultBannerLogo()" >
+                            <label>Use general banner and logo?</label>
+                        </div>
+                        
+                    </div>
+                    <div class="form-set flex col100">
+                        
+                        <div class="form-step col30">
+                            <div class="form-step-name">Location</div>
+                            <div class="form-step-desc">Locations and business details</div>
+                        </div>
+                        <div class="form-group col80">
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col60">
+                                    <div class="form-field-label">Location Name</div>
+                                    <input class="form-field-input" id="location_name" placeholder="Location Name" required/>
+                                </div>
+                                <div class="form-field col40">
+                                    <div class="form-field-label">Timezone *</div>
+                                    <!-- <input class="form-field-input" placeholder="Timezone" /> -->
+                                    <select id="location_timezone" class="form-field-input" required>
+                                        <option value="(UTC+08:00) Australia/Perth">(UTC+08:00) Australia/Perth</option>
+                                        <option value="(UTC+08:45) Australia/Eucla">(UTC+08:45) Australia/Eucla</option>
+                                        <option value="(UTC+09:30) Australia/Adelaide">(UTC+09:30) Australia/Adelaide</option>
+                                        <option value="(UTC+09:30) Australia/Broken_Hill">(UTC+09:30) Australia/Broken Hill</option>
+                                        <option value="(UTC+09:30) Australia/Darwin">(UTC+09:30) Australia/Darwin</option>
+                                        <option value="(UTC+10:00) Australia/Brisbane">(UTC+10:00) Australia/Brisbane</option>
+                                        <option value="(UTC+10:00) Australia/Hobart">(UTC+10:00) Australia/Hobart</option>
+                                        <option value="(UTC+10:00) Australia/Lindeman">(UTC+10:00) Australia/Lindeman</option>
+                                        <option value="(UTC+10:00) Australia/Melbourne">(UTC+10:00) Australia/Melbourne</option>
+                                        <option value="(UTC+10:00) Australia/Sydney">(UTC+10:00) Australia/Sydney</option>
+                                        <option value="(UTC+10:30) Australia/Lord_Howe">(UTC+10:30) Australia/Lord Howe</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col100">
+                                    <div class="form-field-label">Entity Name</div>
+                                    <input class="form-field-input" id="entity_name" placeholder="Entity Name" required />
+                                </div>
+                            </div>
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col100">
+                                    <div class="form-field-label">Location Address</div>
+                                    <input class="form-field-input" id="location_address" placeholder="Location Address" required/>
+                                </div>
+                            </div>
+                            <div class="form-group-row col80 flex">
+                                <div class="form-field col100">
+                                    <div class="form-field-label">Business Description</div>
+                                    <textarea class="form-field-input" id="business_description" placeholder="Business Description" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-set flex col100">
+                    <div class="form-step col30">
+                        <div class="form-step-name">Owner</div>
+                        <div class="form-step-desc">Owner and contact details</div>
+                    </div>
+                    <div class="form-group col80">
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Company Owner / Point of Contact *</div>
+                                <input class="form-field-input" id="point_contact_name" placeholder="Company Owner / Point of Contact Name" required/>
+                            </div>
+                            <div class="form-field col50">
+                                <div class="form-field-label">Owner's or Point of Contact's Email *</div>
+                                <input type="email" class="form-field-input" id="point_contact_email" placeholder="Owner's or Point of Contact Email"  required/>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            
+                            <div class="form-field col50">
+                                <div class="form-field-label">Finance Contact Person *</div>
+                                <input class="form-field-input" id="finance_contact_name" placeholder="Finance Contact Person Name"  required/>
+                            </div>
+                            <div class="form-checkbox col50">
+                                <!-- <div class="form-field-label">Is Finance Name Global? </div> -->
+                                <input type="checkbox" id="is_finance_name_global">
+                                <label>Is Finance Name Global?</label>
+                                <!-- <select id="is_finance_name_global" class="form-field-input">
+                                    <option value="1">True</option>
+                                    <option value="0">false</option>
+                                </select> -->
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Finance Contact Email *</div>
+                                <input type="email" class="form-field-input" id="finance_contact_email" placeholder="Finance Email *" required/>
+                            </div>
+                        
+                            <div class="form-checkbox col50">
+                                <!-- <div class="form-field-label">Is Finance Email Global?</div> -->
+                                <input type="checkbox" id="is_finance_email_global">
+                                <label>Is Finance Email Global?</label>
+                               <!--  <select id="is_finance_email_global" class="form-field-input">
+                                    <option value="1">True</option>
+                                    <option value="0">false</option>
+                                </select> -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">ABN</div>
+                                <input class="form-field-input" id="abn" placeholder="ABN" required/>
+                            </div>
+                            <div class="form-field col50">
+                                <div class="form-field-label">ACN</div>
+                                <input class="form-field-input" id="acn" placeholder="ACN" required/>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Orders Contact Name</div>
+                                <input class="form-field-input" id="orders_contact_name" placeholder="Orders Contact Name" required />
+                            </div>
+                            <div class="form-field col50">
+                                <div class="form-field-label">Orders Contact Email</div>
+                                <input type="email" class="form-field-input" id="orders_contact_email" placeholder="Orders Contact Email" required />
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Delivery Radius</div>
+                                <input class="form-field-input" id="delivery_radius" placeholder="Delivery Radius" required />
+                            </div>
+
+                            <div class="form-field col50">
+                                <div class="form-field-label">Delivery Method</div>
+
+                                <select class="form-field-input" id="delivery_method" required disabled>
+                                    <option value="self_deliver">Self Deliver</option>
+                                    <!-- <option value="letscater_delivery">Lets Cater Delivery</option>
+                                    <option value="national_postage">National Postage</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Bank</div>
+                                <input class="form-field-input" id="bank" placeholder="Bank" required />
+                            </div>
+                            <div class="form-field col50">
+                                <div class="form-field-label">BSB</div>
+                                <input class="form-field-input" id="bsb" placeholder="BSB" required />
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Account Name</div>
+                                <input class="form-field-input" id="account_name" placeholder="Account Name" required />
+                            </div>
+                            <div class="form-field col50">
+                                <div class="form-field-label">Account Number</div>
+                                <input class="form-field-input" id="account_number" placeholder="Account Number" required />
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <span id="updateMap" onclick="updateMap()">Show Radius on Map</span>
+                <div class="form-set flex col100" style="margin-top: 15px;">
+                    <div id="mapLoad" style="width: 100%;height: 500px;"></div>
+                </div>
+
+                <div class="xy-center">
+                    <button id = "btnSubmit" class="btn default icon-right x-center">Submit
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+            <img  id="testimg" width="100%" />
+        </div>
+    </div>
+<script>
+    function removeLocation(id,name){
+        let text = "Are you sure you want to remove location name: "+name+"?";
+        if (confirm(text) == true) {
+            rmLocation(id);
+        } 
+    }
+</script>

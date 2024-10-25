@@ -1,0 +1,243 @@
+
+<style type="text/css">
+    .menu__list-item {
+        max-width: 577px;
+    }
+    .overlay-wrapper {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding-top: 4em;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.285);
+    }
+    .custom-modal {
+        position: absolute;
+        left: 40%;
+    }
+
+</style>
+
+<div class="portal-container-body">
+    <div class="menu__list small-12 large-12">
+        <!-- <div class="menu__list-item">
+            <div class="space-btwn x-start">
+                <div>
+                    <div class="flex x-center bottom20">
+                        <input type="checkbox" />
+                        <div class='pill-item blue left10'>Default</div>
+                    </div>
+                    <div class="menu__list-item-name">
+                        Monday School Event
+                    </div>
+                </div>
+                <div class="left-auto x-center">
+                    <button class="btn red" onclick="deleteItem(this,'.menu__list-item')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">Start Date</span>
+                </div>
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">End Date</span>
+                </div>
+            </div>
+            <div class="button-group top20">
+                <button class="btn icon-right default"  onclick="window.location.href = '/view-menus';">View <i class="bi bi-eye"></i>
+                    <button class="btn icon-right default-3" onclick="window.location.href = '/edit-menus';">Edit <i class="bi bi-pencil-fill"></i>
+                        <button class="btn icon-right default-2">Copy <i class="bi bi-copy"></i>
+            </div>
+        </div>
+        <div class="menu__list-item">
+            <div class="space-btwn x-start">
+                <div>
+                    <div class="flex x-center bottom20">
+                        <input type="checkbox" />
+                    </div>
+                    <div class="menu__list-item-name">
+                        Monday School Event
+                    </div>
+                </div>
+                <div class="left-auto x-center">
+                    <button class="btn red" onclick="deleteItem(this,'.menu__list-item')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">Start Date</span>
+                </div>
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">End Date</span>
+                </div>
+            </div>
+            <div class="button-group top20">
+                <button class="btn icon-right default"  onclick="window.location.href = '/view-menus';">View <i class="bi bi-eye"></i>
+                    <button class="btn icon-right default-3" onclick="window.location.href = '/edit-menus';">Edit <i class="bi bi-pencil-fill"></i>
+                        <button class="btn icon-right default-2">Copy <i class="bi bi-copy"></i>
+            </div>
+        </div>
+        <div class="menu__list-item">
+            <div class="space-btwn x-start">
+                <div>
+                    <div class="flex x-center bottom20">
+                        <input type="checkbox" />
+                    </div>
+                    <div class="menu__list-item-name">
+                        Monday School Event
+                    </div>
+                </div>
+                <div class="left-auto x-center">
+                    <button class="btn red" onclick="deleteItem(this,'.menu__list-item')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">Start Date</span>
+                </div>
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">End Date</span>
+                </div>
+            </div>
+            <div class="button-group top20">
+                <button class="btn icon-right default"  onclick="window.location.href = '/view-menus';">View <i class="bi bi-eye"></i>
+                    <button class="btn icon-right default-3" onclick="window.location.href = '/edit-menus';">Edit <i class="bi bi-pencil-fill"></i>
+                        <button class="btn icon-right default-2">Copy <i class="bi bi-copy"></i>
+            </div>
+        </div>
+        <div class="menu__list-item">
+            <div class="space-btwn x-start">
+                <div>
+                    <div class="flex x-center bottom20">
+                        <input type="checkbox" />
+                    </div>
+                    <div class="menu__list-item-name">
+                        Monday School Event
+                    </div>
+                </div>
+                <div class="left-auto x-center">
+                    <button class="btn red" onclick="deleteItem(this,'.menu__list-item')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">Start Date</span>
+                </div>
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">End Date</span>
+                </div>
+            </div>
+            <div class="button-group top20">
+                <button class="btn icon-right default"  onclick="window.location.href = '/view-menus';">View <i class="bi bi-eye"></i>
+                    <button class="btn icon-right default-3" onclick="window.location.href = '/edit-menus';">Edit <i class="bi bi-pencil-fill"></i>
+                        <button class="btn icon-right default-2">Copy <i class="bi bi-copy"></i>
+            </div>
+        </div>
+        <div class="menu__list-item">
+            <div class="space-btwn x-start">
+                <div>
+                    <div class="flex x-center bottom20">
+                        <input type="checkbox" />
+                    </div>
+                    <div class="menu__list-item-name">
+                        Monday School Event
+                    </div>
+                </div>
+                <div class="left-auto x-center">
+                    <button class="btn red" onclick="deleteItem(this,'.menu__list-item')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">Start Date</span>
+                </div>
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">End Date</span>
+                </div>
+            </div>
+            <div class="button-group top20">
+                <button class="btn icon-right default"  onclick="window.location.href = '/view-menus';">View <i class="bi bi-eye"></i>
+                    <button class="btn icon-right default-3" onclick="window.location.href = '/edit-menus';">Edit <i class="bi bi-pencil-fill"></i>
+                        <button class="btn icon-right default-2">Copy <i class="bi bi-copy"></i>
+            </div>
+        </div>
+        <div class="menu__list-item">
+            <div class="space-btwn x-start">
+                <div>
+                    <div class="flex x-center bottom20">
+                        <input type="checkbox" />
+                    </div>
+                    <div class="menu__list-item-name">
+                        Monday School Event
+                    </div>
+                </div>
+                <div class="left-auto x-center">
+                    <button class="btn red" onclick="deleteItem(this,'.menu__list-item')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">Start Date</span>
+                </div>
+                <div class="text-with-labels">
+                    <span class="text-value">January 1, 2023</span>
+                    <span class="text-label">End Date</span>
+                </div>
+            </div>
+            <div class="button-group top20">
+                <button class="btn icon-right default"  onclick="window.location.href = '/view-menus';">View <i class="bi bi-eye"></i>
+                    <button class="btn icon-right default-3" onclick="window.location.href = '/edit-menus';">Edit <i class="bi bi-pencil-fill"></i>
+                        <button class="btn icon-right default-2">Copy <i class="bi bi-copy"></i>
+            </div>
+        </div> -->
+    </div>
+</div>
+<div class="modals">
+    <div class="overlay-wrapper overlay-duplicate" style="display: none;">
+        <div data-id="update-category" class="custom-modal" style="width: 500px;display: none;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-header-1">Copy Menu</div>
+            </div>
+            <div class="custom-modal-body">
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Menu Name</div>
+                        <div class="x-center">
+                            <input type="hidden" name="id" value="">
+                            <input type="text" name="name" class="form-field-input" placeholder="Menu Name" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-modal-footer space-btwn">
+                <button type="button" class="btn ghost" onclick="Menus.main.closeModal('overlay-duplicate'); return false;">Cancel</button>
+                <button type="button" class="btn default icon-right" onclick="Menus.menu.duplicateMenu(); return false;">Okay <i class="bi bi-check-all"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

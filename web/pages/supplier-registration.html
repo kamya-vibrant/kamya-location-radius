@@ -1,0 +1,140 @@
+<div style="margin-top: 120px;"></div>
+<div onload="setJs()">
+        <form onsubmit="registerSupplier(event)">
+        <div class="form-header">
+            <h2>Registration</h2>
+            <p class="grey-text">Create an account and register your organisation</p>
+        </div>
+        <div class="badges-popup">
+            <div class="badge-item blue bottom20 pop">
+                <div class="badge-item-text x-center col90">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <div>Fill in the required fields below</div>
+                </div>
+                <div class="badge-item-close-popup xy-center left-auto col10">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+            <div class="badge-item yellow bottom20">
+                <div class="badge-item-text x-center col90">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div>Please fill in all the required fields</div>
+                </div>
+                <div class="badge-item-close-popup xy-center left-auto col10">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+            <div class="badge-item green bottom20">
+                <div class="badge-item-text x-center col90">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <div>Successfully updated records</div>
+                </div>
+                <div class="badge-item-close-popup xy-center left-auto col10">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+            <div class="badge-item red bottom20">
+                <div class="badge-item-text x-center col90">
+                    <i class="bi bi-x-circle-fill"></i>
+                    <div>There was an error submitting request</div>
+                </div>
+                <div class="badge-item-close-popup xy-center left-auto col10">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Supplier</div>
+                    <div class="form-step-desc">Company Owner</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">First Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="First Name"  id="first_name" required/>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Last Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Last Name"  id="last_name"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Login Email *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Login Email" id="email"  required/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                       </div>     
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Owner's Phone*</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Owner's Phone" id="phone"  required/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                       </div>     
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Entity Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Entity Name"  id="entity_name"  required/>
+                            </div>
+                       </div>     
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Postal Address *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Postal Address" id="postal_address"  required/>
+                            </div>
+                       </div>     
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">ABN *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="ABN"  id="abn" required/>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">ACN</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="ACN"  id="acn"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+        <div class="button-group form-set xy-center">
+            <button id="submit" class="btn default-2 icon-right">Submit <i class="bi bi-arrow-90deg-right"></i></button>
+        </div>
+    </div>
+    </form>
+    <script>
+        
+        /*$(document).ready(() => {
+
+            document.getElementById("first_name").value = 'Matthew';
+
+            console.log($("#add-child-form"));
+            $("#add-child-form").on("click", function () {
+                const row = $('.child-form').eq(0);
+                const element = $(row).clone();
+                $(element).find("input").val("");
+                $(element).appendTo('.forms');
+            });
+        });*/
+    </script>
+    <div style="margin-bottom: 80px;"></div>

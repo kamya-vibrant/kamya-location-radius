@@ -1,0 +1,495 @@
+<link rel="stylesheet" href="/portal/assets/styles/cropimage.css">
+<style type="text/css">
+    .overlay-wrapper {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding-top: 4em;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.285);
+    }
+    .custom-modal {
+        position: absolute;
+        left: 40%;
+    }
+    .forms form { width:100%; }
+    #image_preview { width:300px; }
+    #crop_popup .modal-dialog { max-width:700px; }
+    #crop_popup .modal-body {
+      height: 400px;
+      overflow: auto; 
+    }
+
+    /** HIDDEN FORM/FIELDS FOR EDITING UNITS **/
+    .form-hidden { display: none; }
+    .edit {
+        .form-field-input {
+            display: inline-block;
+            border: 1px solid #9b9b9b;
+            text-align: center;
+            width: 70%;
+        }
+    }
+    /** HIDDEN FORM/FIELDS FOR EDITING UNITS **/
+    /* Remove arrows in most browsers */
+    input[type="number"] {
+        -moz-appearance: textfield; /* Firefox */
+        -webkit-appearance: none; /* Safari and Chrome */
+        appearance: none;
+    }
+
+    /* Remove arrows in Edge and Internet Explorer */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .sort-column {
+        padding: 10px;
+        border: 1px solid #ccc;
+        min-height: 150px;
+    }
+
+    .sortable-item {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        cursor: move;
+    }
+    
+    .header-container {
+        width: 100%; /* Make the container full width */
+        display: flex; /* Use flexbox to align items */
+        justify-content: space-between; /* Distribute space between items */
+    }
+
+    .header-item {
+        flex: 1; /* Each item takes equal space */
+        text-align: center; /* Center the text in each item */
+        padding: 10px 0; /* Optional: Add padding */
+    }
+
+    .table-header {
+        width: 100%; /* Ensure the header takes the full width */
+    }
+</style>
+<div class="portal-top-nav y-end x-center">
+    <div class="portal-top-nav-user">Subway the Gap</div>
+    <div class="portal-top-nav-icon"><i class="bi bi-person-fill"></i></div>
+</div>
+<div class="portal-container-body flex">
+    <div class="col100">
+        <div class="form-header">
+            <h2>Create Listing</h2>
+            <p class="grey-text">Add a listing</p>
+        </div>
+        <div class="forms">
+            <div class="alert_wrapper"></div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Listing</div>
+                    <div class="form-step-desc">Listing Information and Details</div>
+                </div>
+                <form id="main-listing-form" onsubmit="MSL.listing.saveListing(this); return false;">
+                    <div class="form-group col80">
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field-image">
+                                <input type="file" class="form-field-image-input product" data-image="product" onchange="MSL_GLOBAL.main.selectImage(this); return false;" style="visibility: hidden;" />
+                                <textarea id="textarea_product" class="image_textarea" style="display:none"></textarea>
+                                <img class="product_image" src="" />
+                                <div class="form-field-image-overlay form-field-image-overlay-product">
+                                    <button type="button" data-btn="select-image" class="btn default" data-image="product" onclick="$('.product').click(); return false;">Select Image</button>
+                                </div>
+                                <label id="crop" style="visibility: hidden;" class="btn default">Crop Image</label>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Item Name</div>
+                                <input class="form-field-input" name="item_name" placeholder="Item Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Short Description</div>
+                                <input class="form-field-input" name="short_description" placeholder="Short Description" />
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Long Description</div>
+                                <textarea class="form-field-input" name="long_description" placeholder="Long Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col25">
+                                <div class="form-field-label">Price (Ex GST)</div>
+                                <div class="x-center">
+                                    <i class="form-field-icon bi bi-currency-dollar"></i>
+                                    <input class="form-field-input" name="price" placeholder="Price" />
+                                </div>
+                            </div>
+                            <div class="form-field col25">
+                                <div class="form-field-label">Tax Class</div>
+                                <div class="x-center">
+                                    <i class="form-field-icon bi bi-currency-dollar"></i>
+                                    <input class="form-field-input" name="tax_class" placeholder="Tax Class" />
+                                </div>
+                            </div>
+                            <div class="form-field col25">
+                                <div class="form-field-label">Tax Inclusive</div>
+                                <div class="x-center">
+                                    <i class="form-field-icon bi bi-currency-dollar"></i>
+                                    <input class="form-field-input" name="tax_inclusive" placeholder="Tax Inclusive" />
+                                </div>
+                            </div>
+                            <div class="form-field form-field__no-border col50">
+                                <label class="switch">
+                                    <input type="checkbox" data-label="product_status" onchange="MSL.main.setStatus(this); return false;">
+                                    <span class="slider round"></span>
+                                </label>
+                                <input type="hidden" name="product_status" value="0">
+                                <div class="form-field-label-2">Status</div>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col50">
+                                <div class="form-field-label">Start Date</div>
+                                <div class="x-center">
+                                    <i class="form-field-icon bi bi-calendar"></i>
+                                    <input type="date" class="form-field-input" name="start_date" placeholder="Start Date" />
+                                </div>
+                            </div>
+                            <div class="form-field col50">
+                                <div class="form-field-label">End Date</div>
+                                <div class="x-center">
+                                    <i class="form-field-icon bi bi-calendar"></i>
+                                    <input type="date" class="form-field-input" name="end_date" placeholder="End Date" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SERVING TEMP -->
+                        <!-- <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Serving Temp</span>
+                                </div>
+                                <div class="form-field-tags serving-temp-wrapper"></div>
+
+                                <div class="form-field-tags-selected serving-temp-section"></div>
+                            </div>
+                        </div> -->
+
+                        <!-- PACKAGING TYPE -->
+                        <!-- <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Packaging Type</span>
+                                </div>
+                                <div class="form-field-tags allergens-wrapper">
+                                    <div class="form-field-tag " data-id="1" data-image="" data-info="" data-name="Package Type 1" data-wrapper_section="packaging-type" onclick="MSL.main.selectDetails(this); return false;">Package Type 1</div>
+                                    <div class="form-field-tag " data-id="2" data-image="" data-info="" data-name="Package Type 2" data-wrapper_section="packaging-type" onclick="MSL.main.selectDetails(this); return false;">Package Type 2</div>
+                                    <div class="form-field-tag " data-id="3" data-image="" data-info="" data-name="Package Type 3" data-wrapper_section="packaging-type" onclick="MSL.main.selectDetails(this); return false;">Package Type 3</div>
+                                    <div class="form-field-tag " data-id="4" data-image="" data-info="" data-name="Package Type 4" data-wrapper_section="packaging-type" onclick="MSL.main.selectDetails(this); return false;">Package Type 4</div>
+                                </div>
+                                <div class="form-field-tags-selected packaging-type-section"></div>
+                            </div>
+                        </div> -->
+
+                        <!-- CUISINE -->
+                        <!-- <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Cuisine</span>
+                                </div>
+                                <div class="form-field-tags cuisine-wrapper">
+                                    <div class="form-field-tag " data-id="1" data-image="" data-info="" data-name="Cuisine Type 1" data-wrapper_section="cuisine-type" onclick="MSL.main.selectDetails(this); return false;">Cuisine Type 1</div>
+                                    <div class="form-field-tag " data-id="2" data-image="" data-info="" data-name="Cuisine Type 2" data-wrapper_section="cuisine-type" onclick="MSL.main.selectDetails(this); return false;">Cuisine Type 2</div>
+                                    <div class="form-field-tag " data-id="3" data-image="" data-info="" data-name="Cuisine Type 3" data-wrapper_section="cuisine-type" onclick="MSL.main.selectDetails(this); return false;">Cuisine Type 3</div>
+                                    <div class="form-field-tag " data-id="4" data-image="" data-info="" data-name="Cuisine Type 4" data-wrapper_section="cuisine-type" onclick="MSL.main.selectDetails(this); return false;">Cuisine Type 4</div>
+                                </div>
+                                <div class="form-field-tags-selected cuisine-type-section"></div>
+                            </div>
+                        </div> -->
+
+                        <!-- MEAL TYPE -->
+                        <!-- <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Meal Type</span>
+                                </div>
+                                <div class="form-field-tags meal-wrapper">
+                                    <div class="form-field-tag " data-id="1" data-image="" data-info="" data-name="Meal Type 1" data-wrapper_section="meal-type" onclick="MSL.main.selectDetails(this); return false;">Meal Type 1</div>
+                                    <div class="form-field-tag " data-id="2" data-image="" data-info="" data-name="Meal Type 2" data-wrapper_section="meal-type" onclick="MSL.main.selectDetails(this); return false;">Meal Type 2</div>
+                                    <div class="form-field-tag " data-id="3" data-image="" data-info="" data-name="Meal Type 3" data-wrapper_section="meal-type" onclick="MSL.main.selectDetails(this); return false;">Meal Type 3</div>
+                                    <div class="form-field-tag " data-id="4" data-image="" data-info="" data-name="Meal Type 4" data-wrapper_section="meal-type" onclick="MSL.main.selectDetails(this); return false;">Meal Type 4</div>
+                                </div>
+                                <div class="form-field-tags-selected meal-type-section"></div>
+                            </div>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Sizing</div>
+                    <div class="form-step-desc">Sizing Options</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div class="col100" style="display: flex;align-items: center;justify-content: end; gap: 10px;">
+                            <button type="button" class="btn orange icon-right" onclick="MSL.sizing.initAddSize(); return false;">Find Size<i class="bi bi-search"></i></button>
+                            <button type="button" class="btn orange icon-right" onclick="MSL.sizing.initAddSize(); return false;">Add Size<i class="bi bi-plus-circle"></i></button>
+                        </div>                  
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <!-- <div class="form-field-2 column col100">
+                            <div class="form-field-tags-selected form-field-tags sizing-section"></div>
+                        </div> -->
+                        <div class="form-field-2 column col100 top20 sizing-wrapper">
+                            <!-- <div class="form-field-tags-selected form-field-tags addon-product-section"></div> -->
+                            <table class="table-1 dashed col100">
+                                <thead>
+                                    <th>Default</th>
+                                    <th>Size</th>
+                                    <th>Price Difference</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr data-id="130" data-temp-id="C6YppM6irxiV" class="added-size added-size-130">
+                                        <td class="size-name-130"><input type="checkbox" class="size_default" name="size_default" value="130" onchange="MSL.sizing.setDefault(this); return false;"></td>
+                                        <td class="size-name-130">asd</td>
+                                        <td style="display:flex;align-items:center;justify-content:center;gap:20px;">$<input type="number" min="0" step=".01" class="form-control col50"></td>
+                                        <td><button class="btn red" data-id="130" onclick="MSL.sizing.removeSizeOption(this); return false;"><i class="bi bi-x-circle"></i></button></td>                           
+                                    </tr>
+
+                                    <tr data-id="131" data-temp-id="C6YppM6irxiV" class="added-size added-size-131">
+                                        <td class="size-name-131"><input type="checkbox" class="size_default" name="size_default" value="131" onchange="MSL.sizing.setDefault(this); return false;"></td>
+                                        <td class="size-name-131">dsa</td>
+                                        <td style="display:flex;align-items:center;justify-content:center;gap:20px;">$<input type="number" min="0" step=".01" class="form-control col50"></td>
+                                        <td><button class="btn red" data-id="131" onclick="MSL.sizing.removeSizeOption(this); return false;"><i class="bi bi-x-circle"></i></button></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADD ONS -->
+            <!-- <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Add Ons</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div class="col100">
+                            <div class="form-field" style="margin-right: 0;">
+                                <div class="form-field-label">Product</div>
+                                <input class="form-field-input search_field" name="addon_product_name" data-table="product" data-id="all" data-wrapper="addon-product" placeholder="Find Product" />
+                                <div class="form-field-options addon-product-result" style="display: none;">
+                                    <div class="form-field-option" data-value="011">
+                                        Wheat Bread
+                                    </div>
+                                    <div class="form-field-option" data-value="012">
+                                        Loaf Bread
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-field-2 column col100 top20 addon-product-wrapper">
+                                <table class="table-1 dashed col100">
+                                    <thead>
+                                        <th class="static-th">Product</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>              
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="col100">
+                            <div class="col100">
+                            <div class="form-field">
+                                <div class="form-field-label">Ingredient</div>
+                                <input class="form-field-input search_field" name="ingredient_product_name" data-table="ingredient" data-id="all" data-wrapper="addon-ingredient" placeholder="Find Ingredient" />
+                                <div class="form-field-options addon-ingredient-result" style="display: none;">
+                                    <div class="form-field-option" data-value="011">
+                                        Wheat Bread
+                                    </div>
+                                    <div class="form-field-option" data-value="012">
+                                        Loaf Bread
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-field-2 column col100 top20 addon-ingredient-wrapper">
+                                <table class="table-1 dashed col100">
+                                    <thead>
+                                        <th class="static-th">Ingredient</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>               
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Products Options</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Find Options</div>
+                            <input class="form-field-input search_field" name="product_name" data-table="option" data-id="all" data-wrapper="option" placeholder="Find Options" />
+                            <div class="form-field-options option-result" style="display: none;">
+                                <div class="form-field-option" data-value="011">
+                                    Wheat Bread
+                                </div>
+                                <div class="form-field-option" data-value="012">
+                                    Loaf Bread
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Find Option Set</div>
+                            <input class="form-field-input search_field" name="product_name" data-table="optionset" data-id="all" data-wrapper="optionset" placeholder="Find Option Set" />
+                            <div class="form-field-options optionset-result" style="display: none;">
+                                <div class="form-field-option" data-value="011">
+                                    Wheat Bread
+                                </div>
+                                <div class="form-field-option" data-value="012">
+                                    Loaf Bread
+                                </div>
+                            </div>
+                        </div>                  
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field-2 column col100">
+                            <div class="product-option-section">
+                                <table class="table-1 product-option-table" style="width:100%">
+                                    <thead>
+                                        <tr class="size-main-header">
+                                            <th></th>
+                                            <th rowspan="2">Min</th>
+                                            <th rowspan="2">Max</th>
+                                            <th rowspan="2" class="last-default-th">Can Exceed Maximum</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Products</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Product</div>
+                                <input class="form-field-input search_field" name="product_name" data-table="product" data-id="all" data-wrapper="product" placeholder="i.e Sandwich" />
+                                <div class="form-field-options product-result" style="display: none;">
+                                    <div class="form-field-option" data-value="011">
+                                        Wheat Bread
+                                    </div>
+                                    <div class="form-field-option" data-value="012">
+                                        Loaf Bread
+                                    </div>
+                                </div>
+                        </div> 
+                        <div>
+                            <span>Note: All allergen information is collected in the set up of each product. Please go to products tab to input allergy information</span>
+                        </div>                   
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field-2 column col100">
+                            <div class="form-field-tags-selected form-field-tags product-section"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Ingredients</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div>
+                            <span>Note: All allergen information is collected in the set up of each ingredient. Please go to ingredients tab to input allergy information</span>
+                        </div>                   
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field-2 column col100">
+                            <div class="form-field-tags-selected form-field-tags ingredient-section"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top20 form-group-row col100 flex">
+                <div class="button-group left-auto right-auto xy-center">
+                    <button type="button" class="btn default icon-right btn_submit" onclick="$('#main-listing-form').submit();">Save Changes <i class="bi bi-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modals">
+    <div class="overlay-wrapper overlay-sizing" style="display: none;">
+        <div data-id="update-sizing" class="custom-modal" style="width: 500px;display: none;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-header-1">Sizing</div>
+                <div class="custom-modal-header-2">Add /Update sizes </div>
+            </div>
+            <div class="custom-modal-body">
+                <div class="div_alert"></div>
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Size Name</div>
+                        <div class="x-center">
+                            <input type="text" name="name" class="form-field-input" placeholder="e.g. Small, Medium, Large" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col100 selected-options"></div>
+            </div>
+            <div class="custom-modal-footer space-btwn">
+                <button type="button" class="btn ghost" onclick="MSL_GLOBAL.main.closeModal('overlay-sizing'); return false;">Cancel</button>
+                <button type="button" class="btn default icon-right" onclick="MSL.sizing.addSize(); return false;">Okay <i class="bi bi-check-all"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<img src="" id="image_preview" class="d-none">
+<div class="modal" tabindex="-1" role="dialog" id="crop_popup">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Crop image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body img-contaner w-100"></div>
+      <div class="modal-footer text-center justify-content-center mt-3">
+        <button type="button" class="crop-it">Crop</button>
+        <button type="button" class="reset-it" onclick="resetCroppper(this); return false;">Reset</button>
+        <button type="button" id ="modalclose" class="dismiss" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

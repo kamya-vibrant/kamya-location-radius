@@ -1,0 +1,78 @@
+<style>
+    .loading-screen {
+        z-index: 3;
+    }
+</style>
+<div onload="setJs()">
+    <form onsubmit="registerSupplierEmployee(event)">
+        <div class="form-header" id="form-header_">
+            <h2 id="h2_user_create_page">View Bookings</h2>
+            <!-- <p id="p_user_create_page" class="grey-text">Create an account for your employee</p> -->
+        </div>
+        <div class="forms">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Booking Details</div>
+                    <div class="form-step-desc">Booking Information</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Booking ID</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="" id="id"
+                                     />
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Meal Deal</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="" id="name"
+                                     />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Date</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="" id="date"
+                                     />
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Time</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="" id="time"
+                                     />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="submit" class="btn default-2 icon-left"><i
+                            class="bi bi-arrow-90deg-left"></i> Got Back</button>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+    <script>
+
+        /*$(document).ready(() => {
+
+            document.getElementById("first_name").value = 'Matthew';
+
+            console.log($("#add-child-form"));
+            $("#add-child-form").on("click", function () {
+                const row = $('.child-form').eq(0);
+                const element = $(row).clone();
+                $(element).find("input").val("");
+                $(element).appendTo('.forms');
+            });
+        });*/
+    </script>
+    <div style="margin-bottom: 80px;"></div>

@@ -1,0 +1,524 @@
+
+<style type="text/css">
+    .overlay-wrapper {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding-top: 4em;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.285);
+    }
+    .custom-modal {
+        position: absolute;
+        left: 40%;
+    }
+</style>
+
+<div class="portal-container-body flex top20">
+    <div class="card col100">
+        <div class="tab-group x-center">
+            <div class="tab-item active" data-toggle="tab" data-target="ingredients">Ingredients</div>
+            <div class="tab-item" data-toggle="tab" data-target="products">Products</div>
+            <!-- <div class="tab-item" data-toggle="tab" data-target="sizing">Sizing</div> -->
+            <div class="tab-item" data-toggle="tab" data-target="listings">Listings</div>
+            <!-- <div class="tab-item" data-toggle="tab" data-target="units">Units</div> -->
+            <div class="tab-item" data-toggle="tab" data-target="categories">Options</div>
+            <div class="tab-item" data-toggle="tab" data-target="option-sets">Option Sets</div>
+        </div>
+        <div data-id="ingredients" class="tabs tab-pane form-group col100" style="">
+            <div class="portal-table bottom20">
+                <div class="aa col20" style="float: right;clear: both;padding-bottom: 30px;">
+                    <a class="btn orange icon-right" href="/create-ingredient">Add Ingredient<i class="bi bi-plus-circle"></i></a>
+                </div>
+
+                <table class="table-1 dashed col100 ingredients_table" style="margin-top:50px;">
+
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div data-id="products" class="tabs tab-pane form-group col100" style="display: none;">
+            <div class="portal-table bottom20">
+                <div class="aa col20" style="float: right;clear: both;padding-bottom: 30px;">
+                    <a class="btn orange icon-right" href="/create-product">Add Product<i class="bi bi-plus-circle"></i></a>
+                </div>
+
+                <table class="table-1 dashed col100 products_table" style="margin-top:50px;">
+
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr class="show-subtable">
+                            <td>
+                                <div class="img-container">
+                                    <img src="../portal/assets/img/bagel.jpeg" />
+                                </div>
+                            </td>
+                            <td class="bold">Bagel</td>
+                            <td class="green-text">
+                                <div class="pill-item green">Active</div>
+                            </td>
+                            <td><label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label></td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right">Edit <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn red icon-right">Remove <i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right">Edit <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn default-3 icon-right">View <i class="bi bi-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="subtable">
+                            <td colspan="3">
+                                <div class="y-start x-center">
+                                    <div class="img-container with-text">
+                                        <img src="../portal/assets/img/bagel.jpeg" />
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="subtable-header-text">Bagel</div>
+                                        <div class="subtable-header-subtext">7-inch long</div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Cost</div>
+                                <div>$200.00</div>
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Status</div>
+                                <div class="red-text">Inactive</div>
+                            </td>
+                        </tr>
+                        <tr class="subtable">
+                            <td colspan="3">
+                                <div class="y-start x-center">
+                                    <div class="img-container with-text">
+                                        <img src="../portal/assets/img/bagel.jpeg" />
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="subtable-header-text">Bagel</div>
+                                        <div class="subtable-header-subtext">7-inch long</div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Cost</div>
+                                <div>$200.00</div>
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Status</div>
+                                <div class="green-text">Active</div>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <div data-id="sizing" class="tabs tab-pane form-group col100" style="display: none;">
+            <div class="portal-table table-responsive bottom20">
+                <div class="aa col20" style="float: right;clear: both;padding-bottom: 30px; display: flex; justify-content: end;">
+                    <button type="button" class="btn orange icon-right" onclick="Pantry.sizing.initAddSize(); return false;">Add Size<i class="bi bi-plus-circle"></i></button>
+                </div>
+
+                <table class="table-1 dashed col100 sizing_table">
+                    <thead>
+                        <tr>
+                            <th>Size Name</th>
+                            <th>Parent Product</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+        <div data-id="listings" class="tabs tab-pane form-group col100" style="display: none;">
+            <div class="portal-table bottom20">
+                <div class="aa col20" style="float: right;clear: both;padding-bottom: 30px;">
+                    <a class="btn orange icon-right" href="/create-listing">Add Listings<i class="bi bi-plus-circle"></i></a>
+                </div>
+
+                <table class="table-1 dashed col100 listings_table" style="margin-top:50px;">
+
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>RRP (inc GST)</th>
+                            <th>Tax Class</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr class="show-subtable">
+                            <td>
+                                <div class="img-container">
+                                    <img src="../portal/assets/img/bagel.jpeg" />
+                                </div>
+                            </td>
+                            <td class="bold">Bagel</td>
+                            <td class="green-text">
+                                <div class="pill-item green">Active</div>
+                            </td>
+                            <td><label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label></td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right">Edit <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn red icon-right">Remove <i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right">Edit <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn default-3 icon-right">View <i class="bi bi-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="subtable">
+                            <td colspan="3">
+                                <div class="y-start x-center">
+                                    <div class="img-container with-text">
+                                        <img src="../portal/assets/img/bagel.jpeg" />
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="subtable-header-text">Bagel</div>
+                                        <div class="subtable-header-subtext">7-inch long</div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Cost</div>
+                                <div>$200.00</div>
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Status</div>
+                                <div class="red-text">Inactive</div>
+                            </td>
+                        </tr>
+                        <tr class="subtable">
+                            <td colspan="3">
+                                <div class="y-start x-center">
+                                    <div class="img-container with-text">
+                                        <img src="../portal/assets/img/bagel.jpeg" />
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="subtable-header-text">Bagel</div>
+                                        <div class="subtable-header-subtext">7-inch long</div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Cost</div>
+                                <div>$200.00</div>
+                            </td>
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Status</div>
+                                <div class="green-text">Active</div>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <div data-id="units" class="tabs tab-pane form-group col100" style="display: none;">
+            <div class="portal-table table-responsive bottom20">
+                <table class="table-1 dashed col100 units_table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Unit Name</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                            <th>Parent Product</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+        <div data-id="categories" class="tabs tab-pane form-group col100" style="display: none;">
+            <div class="categories-cont">
+                <!-- <div class="card data-icon">
+                    <div class="img-cont  data-icon-img" style="background-image: url('../assets/img/bagel.jpeg')">
+                    </div>
+                    <div class="data-icon-text">
+                        <div class="header-1  data-iconm-text-name">Breads</div>
+                        <div class=" data-icon-text-desc">12 products</div>
+                    </div>
+                </div>
+                <div class="card data-icon">
+                    <div class="img-cont  data-icon-img" style="background-image: url('../assets/img/bagel.jpeg')">
+                    </div>
+                    <div class="data-icon-text">
+                        <div class="header-1  data-iconm-text-name">Breads</div>
+                        <div class=" data-icon-text-desc">12 products</div>
+                    </div>
+                </div>
+                <div class="card data-icon">
+                    <div class="img-cont  data-icon-img" style="background-image: url('../assets/img/bagel.jpeg')">
+                    </div>
+                    <div class="data-icon-text">
+                        <div class="header-1  data-iconm-text-name">Breads</div>
+                        <div class=" data-icon-text-desc">12 products</div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div data-id="option-sets" class="tabs tab-pane form-group col100" style="display: none;">
+            <div class="portal-table table-responsive bottom20">
+                <button type="button" class="btn default left-auto icon-right bottom20" onclick="Pantry.optionset.setOptionSet(0); return false;">Add Option Sets
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+                <table class="table-1 dashed col100 optionset-table">
+                    <thead>
+                        <tr>
+                            <th>Option Set</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="show-subtable">
+                            <td colspan="2" class="text-left bold green-text">Sandwich</td>
+                        </tr>
+                        <tr class="subtable">
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Category</div>
+                                <div>Choose your bread</div>
+                            </td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right"
+                                    onclick="window.location.href = '/editproduct';"
+                                    onclick="route()">Edit <i
+                                            class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn red icon-right deleteItem" onclick="deleteItem(this,'tr')">Delete <i
+                                            class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="subtable">
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Category</div>
+                                <div>Choose your bread</div>
+                            </td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right"
+                                    onclick="window.location.href = '/editproduct';"
+                                    >Edit <i
+                                            class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn red icon-right" onclick="deleteItem(this,'tr')">Delete <i
+                                            class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="subtable">
+                            <td class="text-left">
+                                <div class="subtable-tb-header">Category</div>
+                                <div>Choose your bread</div>
+                            </td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn default icon-right"
+                                    onclick="window.location.href = '/editproduct';"
+                                    >Edit <i
+                                            class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn red icon-right" onclick="deleteItem(this,'tr')">Delete <i
+                                            class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modals">
+    <div class="overlay-wrapper overlay-category" style="display: none;">
+        <div data-id="update-category" class="custom-modal" style="width: 500px;display: none;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-header-1">Breads</div>
+                <div class="custom-modal-header-2">Update Option</div>
+            </div>
+            <div class="custom-modal-body">
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Add Ingredient or Product</div>
+                        <div class="x-center">
+                            <input id="product_keyword" type="text" name="keyword" class="form-field-input" placeholder="Search for ingredients or products..." />
+                        </div>
+                        <div class="form-field-options" style="display: none;">
+                            <div class="form-field-option" data-value="011">
+                                Wheat Bread
+                            </div>
+                            <div class="form-field-option" data-value="012">
+                                Loaf Bread
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col100 selected-options">
+                    <div class="form-group-row col100 flex cat_assoc_item">
+                        <div class="form-field-item">
+                            <div class="img-container" style="background-image: url('../assets/img/bread1.jpeg');">
+                            </div>
+                            <div class="form-field-value">Bread</div>
+                            <div class="form-field-actions">
+                                <button class="btn red">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-modal-footer space-btwn">
+                <button type="button" class="btn ghost" onclick="Pantry.main.closeModal('overlay-category'); return false;">Cancel</button>
+                <button type="button" class="btn default icon-right" onclick="Pantry.main.closeModal('overlay-category'); return false;">Okay <i class="bi bi-check-all"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay-wrapper overlay-optionset" style="display: none;">
+        <div data-id="add-option-set" class="custom-modal" style="width: 500px;display: none;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-header-1">Option Set</div>
+                <div class="custom-modal-header-2">Add/Update Option Set</div>
+            </div>
+            <div class="custom-modal-body">
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Option Set Name</div>
+                        <div class="x-center">
+                            <input type="hidden" name="osid" value="0">
+                            <input type="hidden" name="action" value="add">
+                            <input type="text" name="name" class="form-field-input" placeholder="e.g. Sandwich" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Add Options</div>
+                        <div class="x-center">
+                            <input id="optionset_keyword" type="text" name="keyword" class="form-field-input" placeholder="Search for options..." />
+                        </div>
+                        <div class="form-field-options" style="display: none;">
+                            <div class="form-field-option" data-value="011">
+                                Cheese
+                            </div>
+                            <div class="form-field-option" data-value="012">
+                                Sauce
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col100 selected-options">
+                    <div class="form-group-row col100 flex optionset_item">
+                    </div>
+                </div>
+            </div>
+            <div class="custom-modal-footer space-btwn">
+                <button type="button" class="btn ghost" onclick="Pantry.main.closeModal('overlay-optionset'); return false;">Cancel</button>
+                <button type="button" class="btn default icon-right" onclick="Pantry.optionset.createOptionSet(); return false;">Okay <i class="bi bi-check-all"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay-wrapper overlay-sizing" style="display: none;">
+        <div data-id="update-sizing" class="custom-modal" style="width: 500px;display: none;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-header-1">Sizing</div>
+                <div class="custom-modal-header-2">Add /Update sizes </div>
+            </div>
+            <div class="custom-modal-body">
+                <div class="div_alert"></div>
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Product</div>
+                        <div class="x-center">
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="pid" value="0">
+                            <input id="product_keyword" type="text" name="keyword" class="form-field-input" placeholder="Search for products..." />
+                        </div>
+                        <div class="form-field-options" style="display: none;">
+                            <div class="form-field-option" data-value="011">
+                                Wheat Bread
+                            </div>
+                            <div class="form-field-option" data-value="012">
+                                Loaf Bread
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-row col100 flex">
+                    <div class="form-field form-field-select col100">
+                        <div class="form-field-label">Size Name</div>
+                        <div class="x-center">
+                            <input type="text" name="name" class="form-field-input" placeholder="e.g. Small, Medium, Large" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col100 selected-options"></div>
+            </div>
+            <div class="custom-modal-footer space-btwn">
+                <button type="button" class="btn ghost" onclick="Pantry.main.closeModal('overlay-sizing'); return false;">Cancel</button>
+                <button type="button" class="btn default icon-right" onclick="Pantry.sizing.addSize(); return false;">Okay <i class="bi bi-check-all"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading-screen x-center column" style="display: none;">
+    <div class="loading-screen-logo">
+        <img src="../portal/assets/img/iconlogo.png" />
+    </div>
+    <div class="loading-screen-text x-center">
+        <div class="green-text">my</div>
+        <div class="orange-text">school</div>
+        <div class="red-text">lunch</div>
+    </div>
+    <div class="loading-screen-sub-text">Loading...</div>
+</div>

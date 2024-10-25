@@ -1,0 +1,141 @@
+<div class="page-container">
+    <button class="btn default space-btwn default-3 bottom20" onclick="window.location.href = '/customer-booking';">
+        <i class="bi bi-arrow-left right20"></i>
+        <div>Back to meal deals</div>
+    </button>
+    <div class="page-container-header" style="margin-bottom: 30px;">
+        <div class="page-container-steps">
+            <div class="page-step completed">
+                <div class="page-step-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <div class="page-step-num">
+                    Step 1
+                </div>
+                <div class="page-step-label">
+                    Choose a meal deal
+                </div>
+            </div>
+            <div class="page-step active">
+                <div class="page-step-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <div class="page-step-num">
+                    Step 2
+                </div>
+                <div class="page-step-label">
+                    Customize your meal
+                </div>
+            </div>
+            <div class="page-step">
+                <div class="page-step-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <div class="page-step-num">
+                    Step 3
+                </div>
+                <div class="page-step-label">
+                    Check out and payment
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-container-content">
+        <div class="store-container">
+            <div class="store-container-header header-1">
+                <!-- <div class="store-container-header-number">1</div>
+                <div class="store-container-header-title">Choose your bread</div> -->
+            </div>
+            <div class="store-item-container" id ="item_container_menus">
+                <!-- <div class="card store-item active">
+                    <div class="img-cont store-item-img" style="background-image: url('portal/assets/img/veggie.jpeg')">
+                    </div>
+                    <div class="store-item-text">
+                        <div class="header-1 store-item-text-name">Veggie Patty</div>
+                        <div class="store-item-text-desc">Veggie Patty Ingredients and Description</div>
+                    </div>
+                    <div class="store-item-price">+ $11.50</div>
+                </div> -->
+
+
+            </div>
+        </div>
+        
+        
+
+    </div>
+</div>
+<div class="sidebar">
+    <div class="sidebar-container">
+        <div class="header-1 bottom20">
+            <span>Order Details </span>
+            <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+
+        <div id="collapseExample">
+
+            <div class="form-group-row col100 flex">
+                <div class="form-field col100">
+                    <div class="form-field-label" style="background-color: white;">Student</div>
+                    <div class="x-center">
+                        <input type="hidden" id="stu_input_id">
+                        <input class="form-field-input" id ="stu_input_name" placeholder="Student" onclick="selectSTU_()" />
+                        <lord-icon src="https://cdn.lordicon.com/iikiwdww.json" stroke="bold"
+                            colors="primary:#121331,secondary:#000000" style="width:30px;height:30px"
+                            class="form-field-icon">
+                        </lord-icon>
+                    </div>
+                    <div class="form-field-options" id ="students_" style="display: none;">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="field-detail-container">
+                <div class="field-detail space-btwn x-center">
+                    <div class="field-detail-label">School</div>
+                    <div class="field-detail-value" id="sch_right_side" >Mawson Primary School</div>
+                </div>
+                <div class="field-detail space-btwn x-center">
+                    <div class="field-detail-label">Meal Deal</div>
+                    <div class="field-detail-value" id="meal_set_name">Basic Meal and Drink Deal</div>
+                </div>
+                <div class="field-detail space-btwn x-center">
+                    <div class="field-detail-label">Date</div>
+                    <div class="field-detail-value"><input type="date" id="deliver_date"></div>
+                </div>
+            </div>
+
+            <div class="header-1 bottom20 top20">Meal Details</div>
+            <div class="field-detail-container" id='checkout_items'>
+                
+<!--                 <div class="field-detail field-detail-2 column bottom10">
+                    <div class="field-detail-label">Bread</div>
+                    <div class="x-center">
+                        <div class="field-detail-value">2 Bagel</div>
+                        <div class="field-detail-value left-auto">
+                            + $4.35
+                        </div>
+                    </div>
+                </div> -->
+<!--                 <div class="field-detail field-detail-2 column bottom10">
+                    <div class="field-detail-label">Bread</div>
+                    <div class="x-center">
+                        <div class="field-detail-value">Bagel</div>
+                        <div class="field-detail-value left-auto">
+                            + $4.35
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="btn default space-btwn col100 x-center" onclick="window.location.href='/customer-checkout-editmeal'">
+                    <span>CHECK OUT</span>
+                    <i class="bi bi-basket2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

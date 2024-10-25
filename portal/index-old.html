@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet/less" type="text/css" href="/portal/assets/styles/bootstrap.css">
+    <link rel="stylesheet/less" type="text/css" href="/portal/assets/styles/default.less">
+    <link rel="stylesheet/less" type="text/css" href="/portal/assets/styles/style.less">
+    <link rel="stylesheet/less" type="text/css" href="/portal/assets/styles/custom.less">
+    <link rel="stylesheet/less" type="text/css" href="/portal/assets/styles/portal.less">
+</head>
+
+<body>
+    <div class="loading-screen x-center column" id="loading" style="display: none;">
+        <div class="loading-screen-logo">
+            <img src="/portal/assets/img/iconlogo.png" />
+        </div>
+        <div class="loading-screen-text x-center">
+            <div class="green-text">my</div>
+            <div class="orange-text">school</div>
+            <div class="red-text">lunch</div>
+        </div>
+        <div class="loading-screen-sub-text">Loading...</div>
+    </div>
+    <div class="sidenav sidenav-portal superadmin" id="sidenav">
+        <div class="sidenav-header x-center">
+            <div class="sidenav-logo">
+                <img src="/portal/assets/img/iconlogo.png" />
+            </div>
+            <div class="column">
+                <p style="min-width: fit-content;text-wrap: nowrap;"><span class="green-text">my</span><span
+                        class="orange-text">school</span><span class="red-text">lunch</span></p>
+                <span class="sidenav-subtext" id="sidebar_user"></span>
+            </div>
+        </div>
+
+        <div class="sidenav-items column" id="sidebar-nav-items">
+            <a class="sidenav-item top-auto" >
+                <i class="bi bi-box-arrow-right"></i>
+                Log Out
+            </a>
+        </div>
+    </div>
+    <div class="portal-container">
+        <div class="portal-top-nav space-btwn x-center">
+            <div class="global-search x-center col80 left20" id="collapseSearch">
+                <div class="hero-global-search x-center col15">
+                    <input name="customer-i-need" placeholder="I need" autocomplete="off" />
+                    <div class="hero-global-options" style="display: none;">
+                        <div class="hero-global-option">Catering</div>
+                        <div class="hero-global-option">Catering</div>
+                        <div class="hero-global-option">Catering</div>
+                        <div class="hero-global-option">Catering</div>
+                    </div>
+                </div>
+                <b class="hero-global-simple-text">at</b>
+                <div class="hero-global-search x-center col25">
+                    <input name="customer-address" placeholder="Location" autocomplete="off" />
+                    <div class="hero-global-options" style="display: none;">
+                        <div class="hero-global-option">University of Australia</div>
+                        <div class="hero-global-option">University of Australia</div>
+                        <div class="hero-global-option">University of Australia</div>
+                        <div class="hero-global-option">University of Australia</div>
+                        <div class="hero-global-option">University of Australia</div>
+                    </div>
+                </div>
+                <b class="hero-global-simple-text">on</b>
+                <div class="hero-global-search x-center col15">
+                    <input type="date" />
+                </div>
+                <div class="hero-global-search x-center col15">
+                    <select>
+                        <option>10:00 AM</option>
+                    </select>
+                </div>
+                <button class="btn default icon-right left10">Search <i class="bi bi-search-heart"></i></button>
+            </div>
+
+            <div class="top-nav-right x-center orange-text">
+                <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSearch"
+                    aria-expanded="false" aria-controls="collapseSearch"><i class="fa fa-search"></i></button>
+                <div class="portal-top-nav-user orange-text" id="top_nav_name"></div>
+                <div class="portal-top-nav-icon orange-text"><i class="bi bi-person-fill"></i></div>
+                <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#sidenav"
+                    aria-expanded="false" aria-controls="sidenav"><i class="fa fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="main-page" class="portal-container-body">
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less@3.13"></script>
+    <script src="https://kit.fontawesome.com/10b39fbab5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="/portal/assets/scripts/cropimage.js"></script>
+
+    <script src="/portal/assets/scripts/scripts.js"></script>
+    <script src="/portal/assets/scripts/app.js"></script>
+    <script src="/portal/assets/scripts/router.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".sidenav-portal").on("mouseover", function () {
+                $(this).addClass("expand");
+            });
+
+            $(".sidenav-portal").on("mouseout", function () {
+                $(this).removeClass("expand");
+                // $(".sidenav-item-container").removeClass("expand");
+            });
+        });
+    </script>
+</body>
+
+</html>

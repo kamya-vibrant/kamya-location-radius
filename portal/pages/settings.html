@@ -1,0 +1,181 @@
+<style>
+    .loading-screen{
+        z-index:3;
+    }
+    .view-doc-obj{
+        width:100%;
+        display: block;
+        height: 400px;
+        padding: 5px;
+    }.lbl-doc{
+        float:left;
+    }.view-doc-obj img{
+        width:100%;
+        display: block;
+        max-height: 400px;
+        padding: 5px;
+    }
+</style>
+<form id="userLocationSetting" onsubmit="locationDocuments(event)">
+    <div class="portal-container-body flex">
+        <div class="col100">
+            <div class="form-header">
+                <h2>Settings</h2>
+                <p class="grey-text">Modify your details</p>
+            </div>
+             <div class="forms">
+                <div class="form-set flex col100" id ="viewdocs">
+                    <div class="form-step col20"></div>
+
+                </div>
+                <div class="form-set flex col100">
+                    <div class="form-step col30">
+                        <div class="form-step-name">Location</div>
+                        <div class="form-step-desc">Location Documents</div>
+                    </div>
+                    <div class="form-group col70">
+                            <div class="form-group-row col70 flex">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Upload Public Liability Insurance</div>
+                                    <img style="display: none;" id ="img_pli"/>
+                                    <input class="form-field-input" onchange ="convertthisfile(this,this.id)"accept="image/*,.pdf" style ="display: block;" id="pli" type="file" required />
+                                </div>
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Public Liability Insurance Expiry Date </div>
+                                    <input class="form-field-input" type= "date" id="ex-pli" placeholder="Public Liability Insurance Expiry Date" required />
+                                </div>
+                            </div>
+                            <div class="form-group-row col70 flex">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Upload Food Safety Licence</div>
+                                    <img style="display: none;" id ="img_fsl"/>
+                                    <input class="form-field-input" onchange ="convertthisfile(this,this.id)" accept="image/*,.pdf" style ="display: block;" id="fsl" type="file" required />
+                                </div>
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Public Food Safety Licence Expiry Date</div>
+                                    <input class="form-field-input" type = "date" id="ex-fsl" placeholder="Public Food Safety Licence Expiry Date" required />
+                                </div>
+                            </div>
+                        
+                        
+                    </div>    
+                </div>
+                <div class="xy-center">
+                    <button class="btn default icon-right x-center">Submit
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</form>
+<form id ="frmSettings" onsubmit="settingsubmit(event)">
+    <div class="portal-container-body flex">
+        <div class="col100">
+            <div class="form-header" id="setting-sup-header">
+                <h2>Settings</h2>
+                <p class="grey-text">Modify your company details</p>
+            </div>
+            <div class="forms">
+                <div class="form-set flex col100" >
+                    <div class="form-step col30">
+                        <div class="form-step-name">Company</div>
+                        <div class="form-step-desc">Company Details</div>
+                    </div>
+                    <div class="form-group col80">
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Company Name</div>
+                                <input id="company_name" class="form-field-input" placeholder="Company Name" />
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Postal Address</div>
+                                <input id="postal_address" class="form-field-input" placeholder="Postal Address" />
+                            </div>
+                            <div class="form-field col40">
+                                <div class="form-field-label">Timezone *</div>
+                                <select id="timezone" class="form-field-input" required>
+                                    <option value="(UTC+08:00) Australia/Perth">(UTC+08:00) Australia/Perth</option>
+                                    <option value="(UTC+08:45) Australia/Eucla">(UTC+08:45) Australia/Eucla</option>
+                                    <option value="(UTC+09:30) Australia/Adelaide">(UTC+09:30) Australia/Adelaide</option>
+                                    <option value="(UTC+09:30) Australia/Broken_Hill">(UTC+09:30) Australia/Broken Hill</option>
+                                    <option value="(UTC+09:30) Australia/Darwin">(UTC+09:30) Australia/Darwin</option>
+                                    <option value="(UTC+10:00) Australia/Brisbane">(UTC+10:00) Australia/Brisbane</option>
+                                    <option value="(UTC+10:00) Australia/Hobart">(UTC+10:00) Australia/Hobart</option>
+                                    <option value="(UTC+10:00) Australia/Lindeman">(UTC+10:00) Australia/Lindeman</option>
+                                    <option value="(UTC+10:00) Australia/Melbourne">(UTC+10:00) Australia/Melbourne</option>
+                                    <option value="(UTC+10:00) Australia/Sydney">(UTC+10:00) Australia/Sydney</option>
+                                    <option value="(UTC+10:30) Australia/Lord_Howe">(UTC+10:30) Australia/Lord Howe</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Business Description</div>
+                                <textarea id="business_desc" class="form-field-input" placeholder="Business Description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Owner and Finance Person</div>
+                    <div class="form-step-desc">Owner and Finance Person contact details</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Company Owner / Point of Contact *</div>
+                            <input id="point_of_contact_name" class="form-field-input" placeholder="Company Owner / Point of Contact Name" />
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Owner's or Point of Contact's Email *</div>
+                            <input type ="email" id="point_of_contact_email" class="form-field-input" placeholder="Owner's or Point of Contact Email" />
+                        </div>
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Owner's or Point of Contact's Phone *</div>
+                            <input id="point_of_contact_phone"class="form-field-input" placeholder="Owner's or Point of Contact's Phone" />
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Finance Contact Person *</div>
+                            <input id="finance_contact_person_name" class="form-field-input" placeholder="Finance Contact Person Name" />
+                        </div>
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Finance Email *</div>
+                            <input type ="email" id="finance_email" class="form-field-input" placeholder="Finance Email *" />
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Finance Contact Phone Number *</div>
+                            <input id="finance_contact_person_phone" class="form-field-input" placeholder="Finance Contact Phone Number *" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Password</div>
+                    <div class="form-step-desc">Reset your password</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex" >
+                        <a id ="divRsetP" class="btn default-3 icon-right x-center" >Request Password Reset
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="xy-center">
+                <button class="btn default icon-right x-center">Submit
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,224 @@
+<link rel="stylesheet" href="/portal/assets/styles/cropimage.css">
+<style type="text/css">
+    .forms form { width:100%; }
+    #image_preview { width:300px; }
+    #crop_popup .modal-dialog { max-width:700px; }
+    #crop_popup .modal-body {
+      height: 400px;
+      overflow: auto; 
+    }
+
+    /** HIDDEN FORM/FIELDS FOR EDITING UNITS **/
+    .form-hidden { display: none; }
+    .edit {
+        .form-field-input {
+            display: inline-block;
+            border: 1px solid #9b9b9b;
+            text-align: center;
+            width: 70%;
+        }
+    }
+    /** HIDDEN FORM/FIELDS FOR EDITING UNITS **/
+</style>
+
+<div class="portal-container-body flex">
+    <div class="col100">
+        <div class="form-header">
+            <h2>Edit Product</h2>
+            <p class="grey-text">Edit a product to add it to your meal deal</p>
+        </div>
+        <div class="forms">
+            <div class="alert_wrapper"></div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Product</div>
+                    <div class="form-step-desc">Product Information and Details</div>
+                </div>
+                <form id="main-product-form" onsubmit="MSL.product.saveProduct(this); return false;">
+                    <div class="form-group col80">
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field-image">
+                                <input type="hidden" name="is_changed_product" value="0">
+                                <input type="file" class="form-field-image-input product" data-image="product" onchange="MSL.main.selectImage(this); return false;" style="visibility: hidden;" />
+                                <textarea id="textarea_product" style="display:none"></textarea>
+                                <img class="product_image" src="" />
+                                <div class="form-field-image-overlay form-field-image-overlay-product">
+                                    <button type="button" data-btn="select-image" class="btn default" data-image="product" onclick="$('.product').click(); return false;">Select Image</button>
+                                </div>
+                                <label id="crop" style="visibility: hidden;" class="btn default">Crop Image</label>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Product Name</div>
+                                <input class="form-field-input" name="product_name" placeholder="Product Name" required />
+                            </div>
+                            <div class="form-field form-field__no-border col50">
+                                <label class="switch">
+                                    <input type="checkbox" data-label="product_status" onchange="MSL.main.setStatus(this); return false;">
+                                    <span class="slider round"></span>
+                                </label>
+                                <input type="hidden" name="product_status" value="0">
+                                <div class="form-field-label-2">Status</div>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Ingredients</span>
+                                </div>
+                                <div class="form-field-tags ingredients-wrapper"></div>
+
+                                <div class="form-field-tags-selected ingredients-section"></div>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Allergens</span>
+                                </div>
+                                <div class="form-field-tags allergens-wrapper"></div>
+                                <div class="form-field-tags-selected allergens-section"></div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Allergens</span>
+                                </div>
+                                <div class="form-field-tags">
+                                    <div class="form-field-tag " data-id="9" data-ssid="97" data-icon-link="//cdn.lordicon.com/sauxbwrh.json" data-info="allergen" data-name="Dairy Free" data-task="allergens" data-create="1" data-for="product" onclick="selectProductDetails(this); return false;">Dairy Free</div>
+                                    <div class="form-field-tag " data-id="10" data-ssid="97" data-icon-link="//cdn.lordicon.com/gpikvyyg.json" data-info="allergen" data-name="Egg Free" data-task="allergens" data-create="1" data-for="product" onclick="selectProductDetails(this); return false;">Egg Free</div>
+                                    <div class="form-field-tag " data-id="8" data-ssid="97" data-icon-link="//cdn.lordicon.com/vtbevqrc.json" data-info="allergen" data-name="Gluten Free" data-task="allergens" data-create="1" data-for="product" onclick="selectProductDetails(this); return false;">Gluten Free</div>
+                                    <div class="form-field-tag " data-id="11" data-ssid="97" data-icon-link="//cdn.lordicon.com/ikccflft.json" data-info="allergen" data-name="Nut Free" data-task="allergens" data-create="1" data-for="product" onclick="selectProductDetails(this); return false;">Nut Free</div>
+                                    <div class="form-field-tag " data-id="12" data-ssid="97" data-icon-link="//cdn.lordicon.com/khmxcjud.json" data-info="allergen" data-name="Shellfish and Crustaceans Free" data-task="allergens" data-create="1" data-for="product" onclick="selectProductDetails(this); return false;">Shellfish and Crustaceans Free</div>
+                                </div>
+                                <div class="form-field-tags-selected allergen-section"></div>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Dietaries</span>
+                                </div>
+                                <div class="form-field-tags">
+                                    <div class="form-field-tag " data-id="4" data-ssid="97" data-icon-link="//upload_tmp/17125507851712498400.png" data-icon-type="custom" data-info="dietary" data-name="Halal" data-task="dietary" data-create="1" onclick="selectProductDetails(this); return false;">Halal</div>
+                                    <div class="form-field-tag " data-id="3" data-ssid="97" data-icon-link="//cdn.lordicon.com/ibkcqtbk.json" data-icon-type="li" data-info="dietary" data-name="Pescaterian" data-task="dietary" data-create="1" onclick="selectProductDetails(this); return false;">Pescaterian</div>
+                                    <div class="form-field-tag " data-id="1" data-ssid="97" data-icon-link="//cdn.lordicon.com/fdypxyha.json" data-icon-type="li" data-info="dietary" data-name="Vegan" data-task="dietary" data-create="1" onclick="selectProductDetails(this); return false;">Vegan</div>
+                                    <div class="form-field-tag " data-id="2" data-ssid="97" data-icon-link="//cdn.lordicon.com/kepuzfuf.json" data-icon-type="li" data-info="dietary" data-name="Vegetarian" data-task="dietary" data-create="1" onclick="selectProductDetails(this); return false;">Vegetarian</div>
+                                </div>
+                                <div class="form-field-tags-selected dietary-section"></div>
+                            </div>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Units or Variation</div>
+                    <div class="form-step-desc">Product units and variation</div>
+                </div>
+                <div class="form-group col80">
+                    <form onsubmit="createUnit(event); return false;">
+                        <div class="form-group-row col80 x-start" style="margin-bottom: 0px;">
+                            <div class="form-field-image right10">
+                                <input type="file" class="form-field-image-input unit" data-image="unit" onchange="selectImage(this); return false;" style="visibility: hidden;" />
+                                <textarea id="textarea_unit" style="display:none"></textarea>
+                                <img class="unit_image" src="" />
+                                <div class="form-field-image-overlay form-field-image-overlay-unit">
+                                    <button type="button" data-btn="select-image" class="btn default" data-image="unit" onclick="$('.unit').click(); return false;">Select Image</button>
+                                </div>
+                            </div>
+                        
+                            <div class="col70">
+                                <div class="form-group-row x-center col100" style="margin-bottom: 15px;">
+                                    <div class="form-field col50">
+                                        <div class="form-field-label">Unit Name</div>
+                                        <input class="form-field-input" name="unit_name" placeholder="Unit Name" />
+                                    </div>
+                                    <div class="form-field col50">
+                                        <div class="form-field-label">Unit</div>
+                                        <input class="form-field-input" name="unit" placeholder="Unit" />
+                                    </div>
+                                </div>
+                                <div class="form-group-row x-center col100" style="margin-bottom: 15px;">
+                                    <div class="form-field col100">
+                                        <div class="form-field-label">Short Description</div>
+                                        <input class="form-field-input" name="unit_description" placeholder="Short Description" />
+                                    </div>
+                                </div>
+                                <div class="form-group-row x-center col100">
+                                    <div class="form-field col50">
+                                        <div class="form-field-label">Price (Ex GST)</div>
+                                        <div class="x-center">
+                                            <i class="form-field-icon bi bi-currency-dollar"></i>
+                                            <input class="form-field-input" name="unit_price" placeholder="Price" />
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-field__no-border col50">
+                                        <label class="switch">
+                                            <input type="checkbox" data-label="unit_status" onchange="setStatus(this); return false;">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <input type="hidden" name="unit_status" value="0">
+                                        <div class="form-field-label-2">Status</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="button-group left-auto x-center">
+                                <button type="submit" class="btn default icon-right">Add Unit <i class="bi bi-check"></i></button>
+                                <button class="btn default-2 icon-right">Clear <i class="bi bi-eraser"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="top20 col80">
+                        <div class="portal-table table-responsive bottom20">
+                            <table class="table-1 dashed col100 unit_table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Product Name</th>
+                                        <th>Unit</th>
+                                        <th>Short Description</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="top20 form-group-row col100 flex">
+                <div class="button-group left-auto right-auto xy-center">
+                    <button type="button" class="btn default icon-right btn_submit" onclick="$('#main-product-form').submit();">Save Changes <i class="bi bi-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<img src="" id="image_preview" class="d-none">
+<div class="modal" tabindex="-1" role="dialog" id="crop_popup">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Crop image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body img-contaner w-100"></div>
+      <div class="modal-footer text-center justify-content-center mt-3">
+        <button type="button" class="crop-it">Crop</button>
+        <button type="button" class="reset-it" onclick="resetCroppper(this); return false;">Reset</button>
+        <button type="button" id ="modalclose" class="dismiss" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="form-header" id="form-header_">
+    <h2 id="h2_user_create_page">Add Menu</h2>
+    <!-- <p id="p_user_create_page" class="grey-text">Create an account for your employee</p> -->
+</div>
+<form onsubmit="addMenus(event)">
+<div class="forms">
+
+    <div class="form-set flex col100">
+        <div class="form-step col30">
+            <div class="form-step-name">Menus Details</div>
+            <div class="form-step-desc">Menus Information</div>
+        </div>
+        <div class="form-group col70">
+            <div class="form-group-row col70">
+                <!--<div class="form-field-image">
+                    <input type="file" class="form-field-image-input product" id="mnu_upload_img" data-image="product" onchange="uploadImage_s(this)" style="visibility: hidden;">
+                    <img class="menu_image" id = "menu_image" src="">
+                    
+                    <div class="form-field-image-overlay form-field-image-overlay-product" style="align-items: end; padding-bottom: 5px;">
+                            <button type="button" data-btn="select-image" class="btn default" data-image="product" onclick="$('.product').click(); return false;"
+                            style="box-shadow: none; -webkit-box-shadow: none;" 
+                            >Select Image</button>
+                    </div>
+                    <label id="crop" style="visibility: hidden;" class="btn default">Crop Image</label>
+                </div>-->
+                <div class="form-field form-field__no-border col50">
+                        <label class="switch">
+                            <input type="checkbox" data-label="item_status" id="item_status" value="1">
+                            <span class="slider round"></span>
+                        </label>
+                        
+                        <div class="form-field-label-2">Status</div>
+                </div>
+            </div>
+            <div class="form-group-row col70">
+                <div class="form-field with-value">
+                    <div class="form-field-label">Menu Name</div>
+                    <div class="x-center">
+                        <input type="text" id="mnu_name" class="form-field-input" placeholder="Menu Name" name="name" required />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group-row col70 flex">
+                <div class="form-field with-value col50">
+                    <div class="form-field-label">Start Date</div>
+                    <div class="x-center">
+                        <input type="date" id="mnu_start_date" class="form-field-input" name="start_date" required />
+                    </div>
+                </div>
+                <div class="form-field with-value col50">
+                    <div class="form-field-label">End Date</div>
+                    <div class="x-center">
+                        <input type="date" id="mnu_end_date" class="form-field-input" name="end_date" />
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <a href="/menus" class="btn default-2 icon-left" style="margin-right: 20px;"><i class="bi bi-arrow-90deg-left"></i> Back</a>
+                <button  class="btn default icon-left"> Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

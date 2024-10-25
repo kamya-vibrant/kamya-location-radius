@@ -1,0 +1,101 @@
+<div style="margin-top: 120px;"></div>
+<div>
+    <div class="form-header">
+        <h2>Registration</h2>
+        <p class="grey-text">Create an account and register your supplier</p>
+    </div>
+    <form onsubmit="registerSupplier(event)">
+        <div class="forms">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Supplier</div>
+                    <div class="form-step-desc">Supplier's Info and Details</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">First Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="First Name" id="first_name" required/>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Last Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Last Name"  id="last_name" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Login Email *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Login Email" id="email"  required/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                       </div>     
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Owner's Phone Number *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Owner's Phone Number" id="phone"  required/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Entity Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Entity Name"  id="entity_name"  required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Trading Name *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Trading Name"  id="name"  required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Tell us about your business in 1-2 sentences*</div>
+                            <div class="x-center">
+                                <textarea class="form-field-input" placeholder="Trading Name"  id="description"  required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Postal Address *</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Postal Address" id="postal_address" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">ABN*</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="ABN" id="abn" required/>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">ACN</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="ACN" id="acn"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group form-set xy-center">
+            <button id="submit" class="btn default-2 icon-right">Submit <i class="bi bi-arrow-90deg-right"></i></button>
+        </div>
+    </form>    
+</div>
+<div style="margin-bottom: 80px;"></div>
+

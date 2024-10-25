@@ -1,0 +1,147 @@
+<style>
+    .loading-screen{
+        z-index:3;
+    }
+</style>
+<div class="profile">
+    <div class="portal-container-body flex">
+        <div class="card x-center column col30 right20">
+            <input type="file" id="sup_img_file" style="visibility:hidden;" onchange ="uploadImage_s(this)" accept="image/*" />
+            <div class="img-cont profile-img top20" id="div_img" style="background-image: url('');"></div>
+            <div class="header-3"  id="left-name">Tim Watson</div>
+            <div class="header-4 bottom20">Supplier</div>
+            <div class="header-3" id="left-phone">09291650668</div>
+            <div class="header-4 bottom20">Phone Number</div>
+            <div class="header-3" id="left-email">email@gmail.com</div>
+            <div class="header-4 bottom20">Email Address</div>
+            <button type="button" data-btn="select-image" class="btn default sel_img" onclick="$('#sup_img_file').click(); return false;">Upload Image</button>
+        </div>
+        <div class="card col70">
+            <form onsubmit = "supplierProfile(event)">
+                <div class="tab-group x-center">
+                    <div class="tab-item active" onclick="showtab(this.id)" id="profile">Profile</div>
+                    <div class="tab-item"  onclick="showtab(this.id)" id="pro-location">Location</div>
+                    <div class="tab-item" onclick="showtab(this.id)" id="pro-banking">Banking Details</div>
+                </div>
+
+                <div class="badge-item yellow bottom20" style="display:none" id="inc_fields">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div>Please fill in all the required fields</div>
+                </div>
+                <div class="badge-item green bottom20" style="display:none" id="success_update">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <div>Successfully updated records</div>
+                </div>
+                <div class="badge-item red bottom20" style="display:none" id="error_submitting">
+                    <i class="bi bi-x-circle-fill"></i>
+                    <div>There was an error submitting request</div>
+                </div>
+                <div id="profiletab" class="tab-page form-group col100">
+                    <div class="form-group-row col100 flex top20">
+                        <div class="form-field col50">
+                            <div class="form-field-label" >First Name</div>
+                            <input class="form-field-input" placeholder="First Name" id="fname"/>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label" >Last Name</div>
+                            <input class="form-field-input" placeholder="Last Name" id="lname"/>
+                        </div>
+                    </div>
+                    <div class="form-group-row col100 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Phone Number</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Phone Number" id="phone"/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Email Address</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Email Address" type="email" id="sup_email"/>
+                                <i class="form-field-icon bi bi-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pro-bankingtab" class="tab-page form-group col100" style="display:none">
+                    <div class="form-group-row col100 flex top20">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Bank</div>
+                            <input class="form-field-input" placeholder="Bank" id="bank"/>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">BSB</div>
+                            <input class="form-field-input" placeholder="BSB" id="bsb"/>
+                        </div>
+                    </div>
+                    <div class="form-group-row col100 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">ABN</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="ABN" id="abn"/>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">ACN</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="ACN" id="acn"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col100 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Account Name</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Account Name" id="account_name"/>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Account Number</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Account Number" id="account_number"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pro-locationtab" class="tab-page form-group col100" style="display:none">
+                    <div class="form-group-row col100 flex top20">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Full Address</div>
+                            <input class="form-field-input" placeholder="Full Address" id="full_address"/>
+                        </div>
+                    </div>
+                    <div class="form-group-row col100 flex top20">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Street or Road Name</div>
+                            <input class="form-field-input" placeholder="Street or Road Name" id="street"/>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Suburb</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Suburb" id ="suburb" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col100 flex">
+                        <!-- <div class="form-field col50">
+                            <div class="form-field-label">Postal Code Address</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Postal Code Address" />
+                            </div>
+                        </div> -->
+                        <div class="form-field col50">
+                            <div class="form-field-label">Postal Code</div>
+                            <div class="x-center">
+                                <input class="form-field-input" placeholder="Postal Code" id ="postal_code"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xy-center bottom20">
+                    <button class="btn default">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

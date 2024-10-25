@@ -1,0 +1,326 @@
+
+ <style>
+     
+@import url("./global.less");
+
+.hero {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  z-index: 1;
+
+  .hero-background-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .hero-text {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .hero-overlay {
+    display: flex;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: left;
+    z-index: 1;
+    padding: 4em;
+    background-color: rgba(0, 0, 0, 0.217);
+  }
+
+  .hero-header {
+    margin-top: 0Q;
+    font-size: 70px;
+    color: white;
+    font-weight: 700;
+    line-height: 80px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.694);
+  }
+
+  .hero-sub-header {
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .hero-global-search {
+    // display: none;
+    background-color: white;
+    // position: absolute;
+    // margin-left: auto;
+    // margin-right: auto;
+    border-radius: 5px;
+    // overflow: hidden;
+    padding: 0 15px;
+    box-shadow: 0px 11px 45px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 11px 45px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 11px 45px 0px rgba(0, 0, 0, 0.75);
+    position: relative;
+    margin-right: 20px;
+
+    .bi-geo-alt-fill {
+      font-size: 17px;
+      color: grey;
+    }
+
+    input {
+      height: 30px;
+      border: 0;
+      outline: 0;
+      width: 600px;
+      margin: 10px 0 10px 10px;
+    }
+
+    .btn {
+      height: 30px;
+      min-height: 55px;
+      font-size: 15px;
+      border-radius: 0;
+      margin-right: -15px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .hero-global-options {
+      position: absolute;
+      top: 60px;
+      display: block;
+      background-color: white;
+      border-radius: 5px;
+      z-index: 1;
+      width: 100%;
+      left: 0;
+      max-height: 200px;
+      overflow-y: auto;
+
+      .hero-global-option {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.115);
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.1s;
+
+        &:hover {
+          background-color: @orange;
+          color: white;
+          transition: 0.1s;
+        }
+      }
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  .hero-cards {
+    z-index: 1;
+
+    .card {
+      padding: 20px;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      min-width: fit-content;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+      height: 75px;
+      border-radius: 10px;
+
+      .column {
+        margin-left: 15px;
+
+        .btn {
+          margin-left: auto;
+        }
+      }
+
+      &:hover {
+        border: 2px solid rgba(255, 255, 255, 0.709);
+        transition: 0.2s;
+      }
+    }
+
+    .card .gif-cont {
+      width: 40px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .card-1 {
+      background-color: rgba(242, 52, 0, 0.582);
+      color: white;
+      margin-right: 10px;
+    }
+
+    .card-2 {
+      background-color: rgba(19, 215, 78, 0.689);
+    }
+  }
+}
+
+.hero-global-simple-text {
+  margin-right: 20px;
+  color: white;
+}
+
+.homepage-section-1 {
+  padding: 80px;
+
+  .header-text {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+  }
+
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    justify-content: center;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    width: 320px;
+    height: 320px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+    padding: 30px 30px 40px 30px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.486);
+
+    &-text {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .icon lord-icon {
+      height: 200px !important;
+      max-height: 200px !important;
+      width: 200px !important;
+      max-width: 200px !important;
+    }
+  }
+}
+
+.homepage-section-2 {
+  padding: 50px 100px;
+
+  .sub-section-1 {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img {
+    width: 60%;
+  }
+
+  .header-text {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: 500;
+    min-width: 250px;
+    border-radius: 3px;
+
+    &.green {
+      border: 2px solid @green;
+
+      &:hover {
+        background-color: @green;
+        color: white;
+      }
+    }
+
+    &.orange {
+      border: 2px solid @orange;
+
+      &:hover {
+        background-color: @orange;
+        color: white;
+      }
+    }
+
+    &.red {
+      border: 2px solid @red;
+
+      &:hover {
+        background-color: @red;
+        color: white;
+      }
+    }
+
+    lord-icon {
+      height: 30px;
+      width: 30px;
+      max-height: 30px;
+      max-width: 30px;
+      margin-right: 10px;
+    }
+  }
+}
+
+footer {
+  padding: 100px;
+  background-color: @green;
+  color: white;
+
+  .footer-item {
+    margin-bottom: 10px;
+  }
+}
+
+ </style>
+
+    <header>
+
+        <div class="hero flex x-center col100">
+            <div class="hero-overlay column xy-center col100">
+
+                <div class="hero-parents-search">
+                    <div class="hero-text xy-center column" style="display: none;">
+                        <h3 class="hero-header col100">Find your school</h3>
+                    </div>
+
+                    <div class="hero-global-search x-center" class="display: none">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <input name="customer-address" placeholder="Your school here..." autocomplete="off" />
+                        <button class="btn default icon-right">Search <i class="bi bi-search-heart"></i></button>
+                        <div class="hero-global-options" id="sel_school">
+<!--                             <div class="hero-global-option">University of Australia</div>
+                            <div class="hero-global-option">University of Australia</div>
+                            <div class="hero-global-option">University of Australia</div>
+                            <div class="hero-global-option">University of Australia</div>
+                            <div class="hero-global-option">University of Australia</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="hero-background-img" src="portal/assets/img/cover.jpg" />
+        </div>
+    </header>
+    

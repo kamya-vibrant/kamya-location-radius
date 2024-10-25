@@ -1,0 +1,286 @@
+
+<div class="profile">
+<div class="portal-container-body flex">
+    <div class="col100">
+        <div class="form-header">
+            <h2>Create Product</h2>
+            <p class="grey-text">Add a product to add it to your meal deal</p>
+        </div>
+
+
+     <form onsubmit="createPantry(event)" enctype="multipart form-data">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Product</div>
+                    <div class="form-step-desc">Product Information and Details</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field-image">
+                            <input type="file" class="form-field-image-input"  id ="input-file" style="display:none ;" />
+                            <img src="" />
+                            <div class="form-field-image-overlay">
+                                <label  for ="input-file" data-btn="select-image" class="btn default">Select Image</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Product Name</div>
+                            <input class="form-field-input" id= "product_name"placeholder="Product Name"   required />
+                            <input class="form-field-input" id= "sb_id" value ="1" style ="display:none;" />
+                        </div>
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col100">
+                            <div class="form-field-label">Description</div>
+                            <textarea class="form-field-input" id ="description"placeholder="Description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="form-field col25">
+                            <div class="form-field-label">Price (Ex GST)</div>
+                            <div class="x-center">
+                                <i class="form-field-icon bi bi-currency-dollar"></i>
+                                <input class="form-field-input" id="price" placeholder="Price" required />
+                            </div>
+                        </div>
+                        <div class="form-field form-field__no-border col50">
+                            <label class="switch">
+                                <input   id="status" type="checkbox" value="1">
+                                <span class="slider round"></span>
+                            </label>
+                            <div class="form-field-label-2">Status</div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                        <div class="form-field-2 column col100 top10">
+                            <div class="form-field-label-shown">
+                                <span>Allergens</span>
+                            </div>
+                            <div class="form-field-tags">
+                                
+                                <label for ="dairy" class="form-field-tag ">Dairy Free</label>
+                                <label for ="egg" class="form-field-tag" >Egg Free</label>
+                                <label for ="gluten" class="form-field-tag">>Gluten Free</label>
+                                <label for ="nut" class="form-field-tag">>Nut Free</label>
+                                <label for ="shellfish" class="form-field-tag">Shellfish and Crustaceans Free</label>
+                               
+                                <label>
+                                    <input onclick="getSelectedAllergies()" type="checkbox" name="allergy" value="dairy" id="dairy" style="display:none;"> 
+                                </label><br>
+                                <label>
+                                    <input onclick="getSelectedAllergies()" type="checkbox" name="allergy" value="Egg Free" id="egg" style="display:none;"> 
+                                </label><br>
+                                <label>
+                                    <input onclick="getSelectedAllergies()" type="checkbox" name="allergy" value="Gluten Free" id="gluten" style="display:none;"> 
+                                </label><br>
+                                <label>
+                                    <input onclick="getSelectedAllergies()" type="checkbox" name="allergy" value="Nut Free" id="nut" style="display:none;">  
+                                </label><br>
+                                 <label>
+                                    <input onclick="getSelectedAllergies()" type="checkbox" name="allergy" value="Shellfish and Crustaceans Free" id="shellfish" style="display:none;">  
+                                </label><br>
+                                
+                                    <!-- <button type="button" onclick="getSelectedAllergies()">Submit</button> -->
+                               
+
+                            </div>
+
+                            <div class="form-field-tags-selected">
+                                <div class="form-field-tags-selected-item">
+                                  <!--   <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                        style="width:50px;height:50px">
+                                    </lord-icon>
+                                    <span>Vegetable</span> -->
+
+                                     <div>
+                                    <h3 id="selectedAllergiesList"></h3>
+                                </div>
+                                </div>
+                                <div class="form-field-tags-selected-item">
+                                    <!-- <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                        style="width:50px;height:50px">
+                                    </lord-icon>
+                                    <span>Vegetable</span> -->
+                                </div>
+                            </div>
+
+                        </div>
+                         
+                    </div>
+
+                       <div class="form-field form-field__no-border col50">
+                            <button  class="btn default-2 icon-right">Add Product <i class="bi bi-arrow-90deg-right"></i></button>
+                        </div>
+
+                            <!-- Dietaries -->
+
+                <!--     <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                        <div class="form-field-2 column col100 top10">
+                            <div class="form-field-label-shown">
+                                <span>Dietaries</span>
+                                <input type="text" id="dietaries" value="" name="">
+                            </div>
+                            <div class="form-field-tags">
+                                <div class="form-field-tag" id="halal">Halal</div>
+                                <div class="form-field-tag" id="pescaterian">Pescaterian</div>
+                                <div class="form-field-tag" id="vegan">Vegan</div>
+                                <div class="form-field-tag" id ="vegetarian"> Vegetarian</div>
+                            </div>
+                            <div class="form-field-tags-selected">
+                                <div class="form-field-tags-selected-item">
+                                    <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                        style="width:50px;height:50px">
+                                    </lord-icon>
+                                    <span>Vegetable</span>
+                                </div>
+                                <div class="form-field-tags-selected-item">
+                                    <lord-icon src="https://cdn.lordicon.com/kepuzfuf.json" trigger="hover"
+                                        style="width:50px;height:50px">
+                                    </lord-icon>
+                                    <span>Vegetable</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+     </form>
+
+     <!-- <form id ="unit_form" enctype="multipart form-data"> -->
+
+     <form onsubmit="createUnit(event)" enctype="multipart form-data" id="unit-form">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Units or Variation</div>
+                    <div class="form-step-desc">Product units and variation</div>
+                </div>
+                <div class="form-group col80">
+                    <div class="form-group-row col80 x-start" style="margin-bottom: 0px;">
+                        <div class="form-field-image right10">
+                            <input type="file" class="form-field-image-input" id="unitImg" style="display: none;"    />
+                            <img src="" />
+                            <div class="form-field-image-overlay">
+                                <label for ="unitImg" data-btn="select-image" class="btn default" required  >Select Image</label>
+                            </div>
+                        </div>
+                        <div class="col70">
+                            <div class="form-group-row x-center col100" style="margin-bottom: 15px;">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Product Name</div>
+                                    <input class="form-field-input" id ="unit_productname" value="" placeholder="Product Name" required    />
+                                </div>
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Unit</div>
+                                    <input class="form-field-input" type ="text" id ="unit" placeholder="Unit" required   />
+                                </div>
+                            </div>
+                            <div class="form-group-row x-center col100" style="margin-bottom: 15px;">
+                                <div class="form-field col100">
+                                    <div class="form-field-label">Short Description</div>
+                                    <input class="form-field-input" type="text"  id="unit_description" placeholder="Short Description" required   />
+                                </div>
+                            </div>
+                            <div class="form-group-row x-center col100">
+                                <div class="form-field col50">
+                                    <div class="form-field-label">Price (Ex GST)</div>
+                                    <div class="x-center">
+                                        <i class="form-field-icon bi bi-currency-dollar"></i>
+                                        <input class="form-field-input" type ="text" id="unit_price" placeholder="Price" required   />
+                                    </div>
+                                </div>
+                                <div class="form-field form-field__no-border col50">
+                                    <label class="switch">
+                                        <input type="checkbox" id="unit_status" value="0">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <div class="form-field-label-2">Status</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group-row col80 flex">
+                        <div class="button-group left-auto x-center">
+                            <button   class="btn default icon-right" style="margin-right:5px;">Add Unit <i class="bi bi-check"></i></button>
+                            <label onclick="deleteEvent(event)" class="btn default-2 icon-right">Clear <i class="bi bi-eraser"></i></label>
+                        </div>
+                    </div>
+                    <div class="top20 col80">
+                        <div class="portal-table table-responsive bottom20">
+                            <table class="table-1 dashed col100">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Product Name</th>
+                                        <th>Unit</th>
+                                        <th>Short Description</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="img-container">
+                                                <img src="../portal/assets/img/bagel.jpeg" />
+                                            </div>
+                                        </td>
+                                        <td class="bold">Bagel</td>
+                                        <td>6 inch long</td>
+                                        <td>Short Description (50 Characters Max)</td>
+                                        <td>$3.00</td>
+                                        <td><label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label></td>
+                                        <td>
+                                            <div class="button-group x-center">
+                                                <button  type="button" class="btn default"><i
+                                                    class="bi bi-pencil-fill"></i></button>
+                                                <button type="button" onclick="deleteEvent()" class="btn red"><i
+                                                        class="bi bi-trash-fill"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- <div class="sidenav-items column">
+            <a class="sidenav-item"  href="/" onclick="route()">
+                <i class="bi bi-menu-button-wide-fill"></i>
+                Dashboard
+            </a>
+            <a class="sidenav-item active"  href="/orders" onclick="route()">
+                <i class="bi bi-card-checklist"></i>
+                Orders
+            </a>
+            <a class="sidenav-item"  href="/bookings" onclick="route()">
+                <i class="bi bi-journal-text"></i>
+                Bookings
+            </a>
+            <a class="sidenav-item"  href="/meal-deal" onclick="route()">
+                <i class="bi bi-people"></i>
+                Meal Deal
+            </a>
+            <a class="sidenav-item top-auto" >
+                <i class="bi bi-box-arrow-right"></i>
+                Log Out
+            </a>
+        </div>
+ -->
+</div>

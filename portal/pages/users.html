@@ -1,0 +1,42 @@
+<div class="portal-container-body" onload="setJs()">
+        <div class="space-btwn x-center bottom10">
+            <div class="portal-container-header-sub-text header-3">Users</div>
+            <a class="btn orange icon-right" id="link_to_create_user"href="/create-user">Add a user <i class="bi bi-plus-circle"></i></a>
+        </div>
+        <div class="portal-table table-responsive bottom20">
+            <table class="table-1 col100" id="tblUser">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>phone</th>
+                        <th>position</th>
+                        <th>Location</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tblusersbody">
+                    <!-- <tr>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td><button class="btn default">Edit</button>
+                        <button class="btn red icon-right">Remove <i class="bi bi-trash-fill"></i></button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script>
+    function removeSupplieruser(id,name){
+      let text = "Are you sure you want to remove user name: "+name+"?";
+      if (confirm(text) == true) {
+        rmSupplieruser(id);
+      } 
+    }
+</script>
+

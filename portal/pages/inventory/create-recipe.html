@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="/portal/assets/styles/cropimage.css">
+<style type="text/css">
+    .forms form { width:100%; }
+    #image_preview { width:300px; }
+    #crop_popup .modal-dialog { max-width:700px; }
+    #crop_popup .modal-body {
+      height: 400px;
+      overflow: auto; 
+    }
+
+    /** HIDDEN FORM/FIELDS FOR EDITING UNITS **/
+    .form-hidden { display: none; }
+    .edit {
+        .form-field-input {
+            display: inline-block;
+            border: 1px solid #9b9b9b;
+            text-align: center;
+            width: 70%;
+        }
+    }
+    /** HIDDEN FORM/FIELDS FOR EDITING UNITS **/
+</style>
+<div class="portal-container-body flex">
+    <div class="col100">
+        <div class="form-header">
+            <h2>Create Recipe</h2>
+            <p class="grey-text">Add a recipe to add it to your meal deal</p>
+        </div>
+        <div class="forms">
+            <div class="alert_wrapper"></div>
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Recipe</div>
+                    <div class="form-step-desc">Recipe Information and Details</div>
+                </div>
+                <form id="main-product-form" onsubmit="MSL.product.saveProduct(this); return false;">
+                    <div class="form-group col80">
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field-image">
+                                <input type="file" class="form-field-image-input" id="product" data-image="product" onchange="MSL_GLOBAL.main.selectImage(this); return false;" style="visibility: hidden;" />
+                                <textarea id="textarea_product" class="image_textarea" style="display:none"></textarea>
+                                <img class="product_image" src="" />
+                                <div class="form-field-image-overlay form-field-image-overlay-product">
+                                    <button type="button" data-btn="select-image" class="btn default" data-image="product" onclick="$('#product').click(); return false;">Select Image</button>
+                                </div>
+                                <label id="crop" style="visibility: hidden;" class="btn default">Crop Image</label>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Recipe Name</div>
+                                <input class="form-field-input" name="product_name" placeholder="Recipe Name" required/>
+                            </div>
+                            <div class="form-field form-field__no-border col50">
+                                <label class="switch">
+                                    <input type="checkbox" data-label="product_status" onchange="MSL.main.setStatus(this); return false;" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                                <input type="hidden" name="product_status" value="1">
+                                <div class="form-field-label-2">Status</div>
+                            </div>
+                        </div>
+                       <!-- DO NOT REMOVE THIS COMMENT IN CASE THEY NEED IT BACK
+                        <div class="form-group-row col80 flex">
+                            <div class="form-field col100">
+                                <div class="form-field-label">Unit Size</div>
+                                <input class="form-field-input" name="unit_size" placeholder="Unit Size" required />
+                            </div>
+                            <div class="form-field col100">
+                                <div class="form-field-label">Measured In</div>
+                                <input class="form-field-input" name="measurement" placeholder="Measurement" required />
+                            </div>
+                        </div> -->
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Ingredients</span>
+                                </div>
+                                <div class="form-field-tags ingredients-wrapper"></div>
+
+                                <div class="form-field-tags-selected ingredients-section"></div>
+                            </div>
+                        </div>
+                        <div class="form-group-row col80 flex" style="margin-top: 50px;">
+                            <div class="form-field-2 column col100 top10">
+                                <div class="form-field-label-shown">
+                                    <span>Allergens</span>
+                                </div>
+                                <div class="form-field-tags allergens-wrapper"></div>
+                                <div class="form-field-tags-selected allergens-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="top20 form-group-row col100 flex">
+                <div class="button-group left-auto right-auto xy-center">
+                    <button type="button" class="btn default icon-right btn_submit" onclick="MSL.main.submitForm();">Save Changes<i class="bi bi-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<img src="" id="image_preview" class="d-none">
+<div class="modal" tabindex="-1" role="dialog" id="crop_popup">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Crop image</h5>
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>-->
+      </div>
+      <div class="modal-body img-contaner w-100"></div>
+      <div class="modal-footer text-center justify-content-center mt-3">
+        <button type="button" class="crop-it">Crop</button>
+        <!--<button type="button" class="reset-it" onclick="resetCroppper(this); return false;">Reset</button> -->
+        <button type="button" id ="modalclose" class="dismiss" onclick="MSL.main.closeCropperModal(this); return false;" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>

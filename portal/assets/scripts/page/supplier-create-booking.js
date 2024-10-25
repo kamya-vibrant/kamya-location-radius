@@ -1,0 +1,1 @@
+console.log("supplier-create-booking.js");

@@ -1,0 +1,134 @@
+
+    <form onsubmit="customerReg(event)">
+        <div style="margin-top: 120px;"></div>
+        <div class="form-header">
+            <h2>Registration</h2>
+            <p class="grey-text">Create an account and register your children</p>
+        </div>
+        <div class="forms" id="stuSection">
+            <div class="form-set flex col100">
+                <div class="form-step col30">
+                    <div class="form-step-name">Account Details</div>
+                    <div class="form-step-desc">Parent's or Guardian's Information</div>
+                </div>
+                <div class="form-group col70">
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">First Name</div>
+                            <input id="cfname" class="form-field-input" placeholder="First Name" required/>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Last Name</div>
+                            <input id="clname" class="form-field-input" placeholder="Last Name" required/>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div  class="form-field-label">Email</div>
+                            <div class="x-center">
+                                <input id="cemail" type ="email" class="form-field-input" placeholder="Email" required/>
+                                <i class="form-field-icon bi bi-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Mobile Number</div>
+                            <div class="x-center">
+                                <input id="cnumber" class="form-field-input" placeholder="Mobile Number" required/>
+                                <i class="form-field-icon bi bi-telephone"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col50">
+                            <div class="form-field-label">Password</div>
+                            <div class="x-center">
+                                <input id="cpassword" type="Password" class="form-field-input" placeholder="Password" required/>
+                                <i class="form-field-icon bi bi-key"></i>
+                            </div>
+                        </div>
+                        <div class="form-field col50">
+                            <div class="form-field-label">Re-type Password</div>
+                            <div class="x-center">
+                                <input id="cRpassword" type="Password" class="form-field-input" placeholder="Re-type Password" required/>
+                                <i class="form-field-icon bi bi-key"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    <!-- </div> -->
+    <div class="child-form form-set flex col100">
+        <div class="form-step col30">
+            <div class="form-step-name">Student Details</div>
+            <div class="form-step-desc">Student's Information</div>
+        </div>
+        <div class="form-group col70">
+            <div class="form-group-row col70 flex">
+                <div class="form-field col50">
+                    <div class="form-field-label">First Name</div>
+                    <input id="cSfname0" class="form-field-input" placeholder="First Name" />
+                </div>
+                <div class="form-field col50">
+                    <div class="form-field-label">Last Name</div>
+                    <input id="cSlname0" class="form-field-input" placeholder="Last Name"required />
+                </div>
+            </div>    
+                    <div class="form-group-row col70 flex">
+                        <div class="form-field col70">
+                            <div class="form-field-label">School</div>
+                            <div class="x-center">
+                                <input id="cSschoolid0" style="display: none;" class="form-field-input" placeholder="School" required/>
+                                <input id="cSschool0" onInput="chooseSchool1(0)" onclick="chooseSchool(0)" class="form-field-input" placeholder="School" required/>
+                                <lord-icon src="https://cdn.lordicon.com/eeouelif.json" stroke="bold"
+                                    colors="primary:#121331,secondary:#000000" style="width:30px;height:30px"
+                                    class="form-field-icon">
+                                </lord-icon>
+                            </div>
+                            <div class="form-field-options" style="display: none;" id ="schoolselectfield0">
+                            </div>
+                        </div>
+                        <div class="form-field col30">
+                            <div class="form-field-label">Class</div>
+                            <div class="x-center">
+                                <input id="cSclassid0" type="hidden">
+                                <input id="cSclass0" readonly onInput="chooseClass1(0)" onclick="chooseClass(0)" class="form-field-input" placeholder="Class" required/>
+                                <lord-icon src="https://cdn.lordicon.com/nwkmdrya.json" stroke="bold"
+                                    colors="primary:#121331,secondary:#000000" style="width:30px;height:30px"
+                                    class="form-field-icon">
+                                </lord-icon>
+                            </div>
+                            <div class="form-field-options" style="display: none;" id ="classselectfield0"></div>
+                        </div>
+                    </div>
+                    <div class="form-group-row col70 flex" style="margin-top: 50px;">
+                        <div class="form-field-2 column col100 top10">
+                            <div class="form-field-label-shown">
+                                <span>Allergies</span>
+                            </div>
+                            <div class="form-field-tags" id ="btnAllertab0">
+                                <!-- <div id="cSseafood0" onclick="funcSeafoods(this.id)" class="form-field-tag">Seafood</div>
+                                <div id="cSgluten0" onclick="funcGluten(this.id)" class="form-field-tag">Gluten</div>
+                                <div id="cSnuts0" onclick="funcNuts(this.id)" class="form-field-tag">Nuts</div>
+                                <div id="cScoconut0" onclick="funcCoconut(this.id)" class="form-field-tag">Coconut</div>
+                                <div id="cSegg0" onclick="funcEgg(this.id)" class="form-field-tag">Eggs</div>
+                                <div id="cSdairy0" onclick="funcDairy(this.id)" class="form-field-tag">Dairy</div>
+                                <div id="cSshellfish0" onclick="funcShellfish(this.id)" class="form-field-tag">Shellfish and Crustaceans</div> -->
+                            </div>
+                            <div class="form-field-tags-selected" id="allergiesSection0">         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="button-group form-set xy-center">
+            <button id="add-child-form" type="button" onclick="addStudent()" class="btn default icon-right">Add More Children <i class="bi bi-plus-lg"></i></button>
+            <button id="submit" class="btn default-2 icon-right">Submit <i class="bi bi-arrow-90deg-right"></i></button>
+        </div>
+        <div style="margin-bottom: 80px;"></div>
+    </form>
+
